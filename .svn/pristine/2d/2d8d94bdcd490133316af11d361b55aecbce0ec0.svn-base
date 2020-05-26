@@ -1,0 +1,27 @@
+<view class="container">
+	<view class='conBoxTop'>
+		<view class='conFont'>
+			我的粉丝
+		</view>
+		<view class='conFontNum'>
+			<view class='num'>
+				500
+			</view>
+			人
+		</view>
+	</view>
+    <view class='zhanwei'></view>
+    <view class='box' wx:for='{{item}}' wx:key='index'>
+            <image src="{{item.img}}" class='lookimg' />
+            <view>
+                <view class='boxFont'>
+                    {{item.name}}
+                </view>
+                <view class='boxFonttime'>
+                {{item.time}}
+                </view> 
+            </view>
+       
+    </view>
+</view>
+

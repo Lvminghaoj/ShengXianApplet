@@ -1,0 +1,41 @@
+//index.js
+//获取应用实例
+import { postData, getData } from '../../utils/https'
+Page({
+    data: {
+        condition: true, //控制是收入明细还是提现明细
+        cashMoney: 500.00, //提现明细金额
+        cashMoneyTwo: 500.00, //收入明细金额
+        cashNum: 500, //提现次数
+        cashNumTwo: 100, // 收入次数
+        items: [{ id: 1, registerNumber: 123465798165, type: 0, BankNum: '中国银行1478****1234', money: 148.58, time: '2020/3/9 20:15:22' },
+            { id: 2, registerNumber: 123465798165, type: 1, BankNum: '中国银行1478****1234', money: 148.58, time: '2020/3/9 20:15:22' },
+            { id: 3, registerNumber: 123465798165, type: 2, BankNum: '中国银行1478****1234', money: 148.58, time: '2020/3/9 20:15:22', Remarks: '银行卡信息不通过' },
+        ]
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+
+        if (optiacy.id == 1) {
+            console.log(123)
+            wx.setNavigationBarTitle({
+                title: '收入明细'
+            })
+        } else {
+            wx.setNavigationBarTitle({
+                title: '提现明细'
+            })
+        }
+    },
+    getDatas() {
+        // let url = '';
+        // let data = {
+
+        // };
+
+        // postData(url,data,res=>{
+
+        // })
+    }
+})

@@ -1,0 +1,120 @@
+function postData(url, data, Fn, Fail) {
+    wx.request({
+        //项目的真正接口，通过字符串拼接方式实现
+        url: url,
+        header: {
+            "content-type": "application/json;charset=UTF-8"
+        },
+        data: data,
+        method: 'POST',
+        success(res) {
+            let data = res.data;
+            if (data.code == 200) {
+                let dataPost = data.data;
+                if (dataPost == [] || dataPost == null || dataPost == '' || dataPost == undefined) {
+                    Fail(data);
+                    // wx.showToast({
+                    //     title: data.message,
+                    //     icon: 'none',
+                    //     duration: 2000
+                    // })
+                } else {
+                    console.log(11111)
+                    Fn(dataPost);
+                }
+            } else {
+                wx.showToast({
+                    title: data.message,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        }
+    })
+}
+// 调用方法 postData(url,data,function(res){console.log(res)})
+
+//GET请求，不需传参，直接URL调用，
+function getData(url, fn) {
+    wx.request({
+        url: url,
+        header: {
+            "content-type": "application/json;charset=UTF-8"
+        },
+        method: 'GET',
+        success(res) {
+            let data = res.data;
+            if (data.code == 200) {
+                let dataPost = data.data;
+                if (dataPost == [] || dataPost == null || dataPost == '') {
+                    wx.showToast({
+                        title: data.message,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else {
+                    fn(dataPost)
+                }
+            } else {
+                wx.showToast({
+                    title: data.message,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        }
+    })
+}
+
+function ChooImg(url, temFilePath, fn, Fail) {
+    wx.uploadFile({
+        url: url,
+        filePath: temFilePath,
+        name: 'file',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        formData: {},
+        success(res) {
+            console.log(res)
+            if (res.statusCode == 200) {
+                let dataPost = res.data;
+                if (dataPost == [] || dataPost == null || dataPost == '') {
+                    wx.showToast({
+                        title: res.errMsg,
+                        icon: 'none',
+                        duration: 2000
+                    })
+                } else {
+                    console.log(11111)
+                    fn(dataPost)
+                }
+            } else {
+                wx.showToast({
+                    title: data.message,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        },
+        fail(res) {
+            Fail(res)
+        }
+    })
+}
+
+function getPhone() {
+    if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+        wx.showToast({ title: '您尚未登录', icon: 'none' })
+        return;
+    }
+}
+
+
+module.exports = {
+    postData,
+    getData,
+    ChooImg,
+    getPhone
+
+}

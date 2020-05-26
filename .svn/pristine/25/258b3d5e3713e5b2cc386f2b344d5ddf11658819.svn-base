@@ -1,0 +1,310 @@
+Page({
+    data: {
+        iphone: '0755-88680510',
+        showImg: ['../../images/QRcode.png']
+    },
+    onLoad: function() {},
+    bindViewTap: function(e) {
+        console.log(e)
+        if (e.target.dataset.iphone == '' || e.target.dataset.iphone == null || e.target.dataset.iphone == undefined) {
+
+        } else {
+            wx.makePhoneCall({
+                phoneNumber: e.target.dataset.iphone //仅为示例，并非真实的电话号码
+            })
+        }
+
+    },
+    showImages() {
+        let that = this;
+        wx.previewImage({
+            urls: that.data.showImg,
+            current: that.data.showImg
+        })
+    }
+})
+
+// Page({
+//     data: {
+
+//     },
+//     share: function() {
+//         var that = this;
+
+//         var companyAddress = '广东省佛山市禅城区嗯嗯嗯嗯嗯'
+//         wx.getSystemInfo({
+//             success: function(res) {
+//                 console.log(res.windowHeight)
+//                 console.log(res.windowWidth)
+//                 that.setData({
+//                     windowHeight: res.windowHeight,
+//                     windowWidth: res.windowWidth
+//                 })
+//             },
+//         })
+//         var windowWidth = that.data.windowWidth;
+
+
+//         const ctx = wx.createCanvasContext('myCanvas')
+//             // 设置矩形边框
+//         ctx.setStrokeStyle('#000000')
+//             // 设置矩形宽高
+//         ctx.strokeRect(0, 0, 400, 200)
+
+//         let canvas = '../../images/background.jpg';
+//         //背景图片
+
+//         ctx.drawImage(canvas, 0, 0, 400, 1000)
+
+//         // 设置文字大小
+//         ctx.setFontSize(12)
+//             // 设置文字颜色
+
+
+//         var cover = '../../images/goods.jpg';
+//         // 上层图片
+//         ctx.drawImage(cover, 0, 0, 400, 200);
+
+//         ctx.fillStyle = '#9d9d9d';
+
+//         // 名字设置
+//         // var name = wx.getStorageSync('companyContacts');
+//         // 设置文字大小
+//         ctx.setFontSize(26)
+//         ctx.fillStyle = '#000';
+//         var name = '吕子恒';
+//         // 填充文字
+//         ctx.fillText(name, 150, 65)
+
+//         // ctx.font = '微软雅黑';
+//         // 设置文字大小
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#454545';
+//         let canpany = ' 蚂蚁未来';
+//         // let canpany = companyName;
+
+//         // 填充文字
+//         ctx.fillText('公司名:' + canpany, 45, 100)
+
+//         // 设置文字大小
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#454545';
+//         var position = ' 经理';
+//         // 填充文字
+//         ctx.fillText('职位:' + position, 45, 130)
+
+
+//         // 联系方式
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#454545';
+//         var tel = " 15289310354";
+//         // var tel = companyPhone;
+
+//         // 填充文字
+//         ctx.fillText('联系方式:' + tel, 45, 160)
+
+//         // 公司地址
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#000';
+//         // 填充文字
+//         ctx.fillText('公司地址', 60, 370)
+
+//         // 公司业务标题
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#000';
+//         // 填充文字
+//         ctx.fillText('公司业务', 60, 230)
+
+//         // 公司业务
+//         ctx.setFontSize(12)
+//         ctx.fillStyle = '#666';
+//         var text = '12346578932165465';
+
+//         var chr = text.split(""); //这个方法是将一个字符串分割成字符串数组
+//         var temp = "";
+//         var row = [];
+//         for (var a = 0; a < chr.length; a++) {
+//             if (ctx.measureText(temp).width < windowWidth - 100) {
+//                 temp += chr[a];
+//             } else {
+//                 a--; //这里添加了a-- 是为了防止字符丢失，效果图中有对比
+//                 row.push(temp);
+//                 temp = "";
+//             }
+//         }
+//         row.push(temp);
+
+//         //如果数组长度大于2 则截取前两个
+//         if (row.length > 2) {
+//             var rowCut = row.slice(0, 2);
+//             // 这个参数就可以判断显示几行
+//             var rowPart = rowCut[1];
+//             var test = "";
+//             var empty = [];
+//             for (var a = 0; a < rowPart.length; a++) {
+//                 if (ctx.measureText(test).width < windowWidth) {
+//                     test += rowPart[a];
+//                 } else {
+//                     break;
+//                 }
+//             }
+
+//             empty.push(test);
+//             var group = empty[0] //这里只显示两行，超出的用...表示
+//             rowCut.splice(1, 1, group);
+//             row = rowCut;
+
+//         }
+//         for (var b = 0; b < row.length; b++) {
+//             ctx.fillText(row[b], 40, 253 + b * 18);
+//         }
+
+//         // 画线
+//         ctx.setFillStyle('#efefef')
+//         ctx.fillRect(45, 236, windowWidth - 100, 1)
+
+
+//         // 业务图标
+//         var yw = '../../images/More.png';
+//         ctx.drawImage(yw, 40, 216, 16, 16)
+
+
+//         // 公司简介
+//         ctx.setFontSize(14)
+//         ctx.fillStyle = '#000';
+//         // 填充文字
+//         ctx.fillText('公司简介', 60, 300)
+
+//         // 画下线
+//         ctx.setFillStyle('#efefef')
+//         ctx.fillRect(45, 306, windowWidth - 100, 1)
+
+
+//         // 简介图标
+//         var yw = '../../images/More.png';
+//         ctx.drawImage(yw, 40, 286, 16, 16)
+
+//         // 公司简介
+//         ctx.setFontSize(12)
+//         ctx.fillStyle = '#666';
+//         // var introduction = "蚂蚁未来科技有限公司办公室地址位于中国的首都，政治、文化中心北京，北京市朝阳区西大望路15号4号楼，注册资本为50 万元";
+//         var introduction = wx.getStorageSync('companyIntroduce');
+
+//         var chr = introduction.split(""); //这个方法是将一个字符串分割成字符串数组
+//         var temp = "";
+//         var row = [];
+//         for (var a = 0; a < chr.length; a++) {
+//             if (ctx.measureText(temp).width < windowWidth - 100) {
+//                 temp += chr[a];
+//             } else {
+//                 a--; //这里添加了a-- 是为了防止字符丢失，效果图中有对比
+//                 row.push(temp);
+//                 temp = "";
+//             }
+//         }
+//         row.push(temp);
+
+//         //如果数组长度大于2 则截取前两个
+//         if (row.length > 2) {
+//             var rowCut = row.slice(0, 2);
+//             var rowPart = rowCut[1];
+//             var test = "";
+//             var empty = [];
+//             for (var a = 0; a < rowPart.length; a++) {
+//                 if (ctx.measureText(test).width < 220) {
+//                     test += rowPart[a];
+//                 } else {
+//                     break;
+//                 }
+//             }
+//             empty.push(test);
+//             var group = empty[0] //这里只显示两行，超出的用...表示
+//             rowCut.splice(1, 1, group);
+//             row = rowCut;
+//         }
+//         for (var b = 0; b < row.length; b++) {
+//             ctx.fillText(row[b], 40, 322 + b * 18);
+//         }
+
+
+//         // 公司地址详情
+//         var chr = companyAddress.split(""); //这个方法是将一个字符串分割成字符串数组
+//         var temp = "";
+//         var row = [];
+//         for (var a = 0; a < chr.length; a++) {
+//             if (ctx.measureText(temp).width < windowWidth - 100) {
+//                 temp += chr[a];
+//             } else {
+//                 a--; //这里添加了a-- 是为了防止字符丢失，效果图中有对比
+//                 row.push(temp);
+//                 temp = "";
+//             }
+//         }
+//         row.push(temp);
+
+
+//         //如果数组长度大于2 则截取前两个
+//         if (row.length > 1) {
+//             var rowCut = row.slice(0, 1);
+//             var rowPart = rowCut[0];
+//             var test = "";
+//             var empty = [];
+//             for (var a = 0; a < rowPart.length; a++) {
+//                 if (ctx.measureText(test).width < 220) {
+//                     test += rowPart[a];
+//                 } else {
+//                     break;
+//                 }
+//             }
+//             empty.push(test);
+//             var group = empty[0] //这里只显示两行，超出的用...表示
+//             rowCut.splice(1, 1, group);
+//             row = rowCut;
+//         }
+//         for (var b = 0; b < row.length; b++) {
+//             ctx.fillText(row[b], 40, 390);
+//         }
+
+
+//         // 画下线
+//         ctx.setFillStyle('#efefef')
+//         ctx.fillRect(45, 375, windowWidth - 100, 1)
+
+
+//         // 地址图标
+//         var yw = '../../images/More.png';
+//         ctx.drawImage(yw, 40, 356, 16, 16)
+
+//         // 圆形icon 自己的微信头像
+//         // var imgLogo = '../../images/goods.jpg'
+//         // ctx.save();
+//         // ctx.beginPath();
+//         // ctx.arc(65, 65, 35, 0, 2 * Math.PI, false);
+//         // ctx.setStrokeStyle('#eee')
+//         // ctx.stroke(); //画了背景的话要先画圆在裁剪才能有圆形图片
+//         // ctx.clip(); //裁剪
+//         // ctx.drawImage(imgLogo, 30, 30, 70, 70);
+//         // ctx.restore();
+
+//         // 小程序二维码
+//         // var path1 = data.path;
+//         var qrcode = '../../images/More.png'
+//         console.log(qrcode)
+//         ctx.drawImage(qrcode, (windowWidth - 80) / 2, 410, 80, 80)
+
+
+//         ctx.draw(false, function() {
+//             wx.canvasToTempFilePath({
+//                 canvasId: 'myCanvas',
+//                 success: function(res) {
+//                     console.log(res.tempFilePath)
+//                     that.setData({
+//                         prurl: res.tempFilePath,
+//                         hidden: false
+//                     })
+//                 }
+//             })
+//         });
+
+//     }
+// })

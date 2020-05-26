@@ -1,0 +1,266 @@
+//index.js
+//获取应用实例
+import { apiObj } from '../../api/api'
+import { postData } from '../../utils/https'
+const time = require("../../utils/util.js");
+Page({
+    data: {
+        items: [{ id: 5, words: '全部订单' }, { id: 0, words: '未支付' }, { id: 1, words: '待收货' }, { id: 2, words: '发货中' }, { id: 3, words: '已完成' }, { id: 4, words: '已取消' }],
+        currentTab: 0,
+        orderList: [],
+        orderListTwo: [],
+        modelHeight: 0,
+        isok: 1,
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        // 根据不同的缓存id来更换页面的标题
+        console.log(optiacy)
+        let that = this;
+        let orderId = optiacy.Ordertype;
+        //根据不同的事件跳转至该页面判断 是 我的订单 还是 粉丝订单
+        // 1 是 我的订单  0是粉丝订单
+        if (orderId == 1) {
+            let id = optiacy.id;
+            that.setData({
+                isok: 1,
+                currentTab: id
+            });
+            wx.setNavigationBarTitle({
+                title: '我的订单'
+            });
+            if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+                wx.showToast({ title: '您尚未登录', icon: 'none' })
+                return;
+            }
+            that.myOrderList({ phone: wx.getStorageSync('phone'), status: String(id) });
+            // 这里还有一个请求 根据id来请求
+        } else {
+            that.setData({
+                isok: 0,
+                currentTab: 5
+            })
+            wx.setNavigationBarTitle({
+                title: '粉丝订单'
+            })
+            if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+                wx.showToast({ title: '您尚未登录', icon: 'none' })
+                return;
+            }
+            that.fsOrderList({ phone: wx.getStorageSync('phone') });
+        }
+        that.getHeight();
+    },
+    navRouter(e) {
+        // 点击切换状态
+        let that = this;
+        if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+            wx.showToast({ title: '您尚未登录', icon: 'none' })
+            return;
+        }
+        // 拿到id来if判断获取对应数据就可以了
+        // 判断是否为我的订单
+        if (that.data.isok == 1) {
+            if (that.data.currentTab === e.target.dataset.id) {
+                return false;
+            } else {
+                that.setData({
+                    currentTab: e.target.dataset.id,
+                })
+                if (e.target.dataset.id == 5) { // 5就是查看全部订单
+                    that.myOrderList({ phone: wx.getStorageSync('phone') });
+                } else {
+                    that.myOrderList({ phone: wx.getStorageSync('phone'), status: String(e.target.dataset.id) });
+                }
+            }
+        } else {
+            if (that.data.currentTab === e.target.dataset.id) {
+                return false;
+            } else {
+                that.setData({
+                    currentTab: e.target.dataset.id,
+                });
+                if (e.target.dataset.id == 5) {
+                    that.fsOrderList({ phone: wx.getStorageSync('phone') });
+                } else {
+                    that.fsOrderList({ phone: wx.getStorageSync('phone'), status: String(e.target.dataset.id) });
+                }
+            }
+        }
+
+
+    },
+    getHeight() {
+        // 适配iphonex
+        let that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = wx.getStorageSync('isIphoneX');
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    modelHeight: 96 / pxToRpxScale,
+                })
+            } else {
+                that.setData({
+                    modelHeight: 66 / pxToRpxScale,
+                })
+            }
+        }
+    },
+    fsOrderList(data) {
+        // 获取粉丝订单数据
+        let that = this;
+        if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+            wx.showToast({ title: '您尚未登录', icon: 'none' })
+            return;
+        }
+        postData(apiObj.fsOrderList, data, (res) => {
+            console.log(res)
+            let item = [];
+            for (let i = 0; i < res.length; i++) {
+                var obj = {
+                    OrderNum: res[i].code,
+                    priceMoney: res[i].orderAmt,
+                    time: time.formatTime(res[i].orderDate, 'Y/M/D h:m:s'),
+                    Ordertype: res[i].status, //0：待支付 1：待发货 2：发货中 3：完成 4:取消
+                    number: res[i].dealCnt,
+                    name: res[i].reciver,
+                    img: res[i].imageList
+                }
+                item.push(obj)
+            }
+            that.setData({
+                orderListTwo: item
+            })
+        }, () => {
+            let that = this;
+            that.setData({
+                orderListTwo: []
+            })
+            wx.showToast({
+                title: '暂无订单消息',
+                icon: 'none',
+                duration: 2000
+            })
+        }, res => {
+            console.log(res)
+        })
+    },
+    myOrderList(data) {
+        // 进来获取我的订单数据
+        if (wx.getStorageSync('phone') == undefined || wx.getStorageSync('phone') == null || wx.getStorageSync('phone') == '') {
+            wx.showToast({ title: '您尚未登录', icon: 'none' })
+            return;
+        }
+        let that = this;
+
+        postData(apiObj.myOrderList, data, (res) => {
+            console.log(res)
+            let item = [];
+            for (let i = 0; i < res.length; i++) {
+                var obj = {
+                    OrderNum: res[i].code,
+                    priceMoney: res[i].orderAmt,
+                    time: time.formatTime(res[i].orderDate, 'Y/M/D h:m:s'),
+                    Ordertype: res[i].status, //0：待支付 1：待发货 2：发货中 3：完成 4:取消
+                    number: res[i].dealCnt,
+                    name: res[i].reciver,
+                    img: res[i].imageList
+                }
+                item.push(obj)
+            }
+            that.setData({
+                orderList: item
+            })
+        }, () => {
+            let that = this;
+            that.setData({
+                orderList: []
+            })
+            wx.showToast({
+                title: '暂无订单消息',
+                icon: 'none',
+                duration: 2000
+            })
+        }, res => {
+            console.log(res)
+        })
+    },
+    changeInputText(e) {
+        console.log(e);
+        let that = this;
+        that.setData({
+            currentTab: 5
+        })
+        if (that.data.isok == 1) {
+            // 我的订单
+            postData(apiObj.mySearchOrder, { phone: wx.getStorageSync('phone'), productName: e.detail.value }, (res) => {
+                console.log(res)
+                let that = this;
+                let item = [];
+                for (let i = 0; i < res.length; i++) {
+                    var obj = {
+                        OrderNum: res[i].code,
+                        priceMoney: res[i].orderAmt,
+                        time: time.formatTime(res[i].orderDate, 'Y/M/D h:m:s'),
+                        Ordertype: res[i].status, //0：待支付 1：待发货 2：发货中 3：完成 4:取消
+                        number: res[i].dealCnt,
+                        name: res[i].reciver,
+                        img: res[i].imageList
+                    }
+                    item.push(obj)
+                }
+                that.setData({
+                    orderList: item
+                })
+            }, () => {
+                let that = this;
+                that.setData({
+                    orderList: []
+                })
+                wx.showToast({
+                    title: '暂无订单消息',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }, res => {
+                console.log(res)
+            })
+        } else {
+            // 粉丝订单
+            postData(apiObj.myFsSearchOrder, { phone: wx.getStorageSync('phone'), productName: e.detail.value }, (res) => {
+                console.log(res)
+                let item = [];
+                for (let i = 0; i < res.length; i++) {
+                    var obj = {
+                        OrderNum: res[i].code,
+                        priceMoney: res[i].orderAmt,
+                        time: time.formatTime(res[i].orderDate, 'Y/M/D h:m:s'),
+                        Ordertype: res[i].status, //0：待支付 1：待发货 2：发货中 3：完成 4:取消
+                        number: res[i].dealCnt,
+                        name: res[i].reciver,
+                        img: res[i].imageList
+                    }
+                    item.push(obj)
+                }
+                that.setData({
+                    orderListTwo: item
+                })
+            }, () => {
+                let that = this;
+                that.setData({
+                    orderListTwo: []
+                })
+                wx.showToast({
+                    title: '暂无订单消息',
+                    icon: 'none',
+                    duration: 2000
+                })
+            }, res => {
+                console.log(res)
+            })
+        }
+    }
+})

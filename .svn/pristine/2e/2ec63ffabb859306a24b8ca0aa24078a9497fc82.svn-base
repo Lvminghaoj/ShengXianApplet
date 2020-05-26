@@ -1,0 +1,84 @@
+<view class="container">
+    <view class='contaiBoxTop'>
+        <view class='box'>
+            <view class='boxLeft'>
+                身份证姓名
+            </view>
+            <view class='boxRight'>
+                <input type="text" bindchange='IDname' value='{{bankCardname}}' class='inputValNum' placeholder='输入身份证名称' placeholder-style='text-align:right' />
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                身份证号码
+            </view>
+            <view class='boxRight'>
+                <input type="text" bindchange='IDNum' value='{{bankCardNum}}' class='inputValNum' placeholder='输入身份证号码' placeholder-style='text-align:right' maxlength='18' />
+            </view>
+        </view>
+    </view>
+    <view class='boxTwo' bindtap='chooseId' data-id='1' wx:if='{{!IDtruePhototrue}}'>
+        <view class='boxTwoS'>
+            <view>
+                <image src="../../images/AddTwo.png" class='lookImgAdd' />
+            </view>
+            <view class='IDTrue'>
+                上传身份证正面
+            </view>
+        </view>
+    </view>
+    <view class='boxtrue' wx:if='{{IDtruePhototrue}}'>
+        <view class='boxtrueTwo'>
+            <view class='boxLeft'>
+                身份证正面
+            </view>
+            <view class='boxRight'>
+                <view class='boxRightImg'>
+                    <view>
+                        <image src="../../images/eachitAdd.png" class='RightImg' />
+                    </view>
+                    <view class='Rightwords' data-id='1' bindtap='chooseId'>
+                        重新上传
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='boxtrueThree'>
+            <image src="{{IDturePhoto}}" class='lookId' />
+        </view>
+    </view>
+    <view class='boxThree' bindtap='chooseId' data-id='2' wx:if='{{!IDtruePhotofalse}}'>
+        <view class='boxTwoS'>
+            <view>
+                <image src="../../images/AddTwo.png" class='lookImgAdd' />
+            </view>
+            <view class='IDTrue'>
+                上传身份证反面
+            </view>
+        </view>
+    </view>
+    <view class='boxfalse' wx:if='{{IDtruePhotofalse}}'>
+        <view class='boxtrueTwo'>
+            <view class='boxLeft'>
+                身份证反面
+            </view>
+            <view class='boxRight'>
+                <view class='boxRightImg'>
+                    <view>
+                        <image src="../../images/eachitAdd.png" class='RightImg' />
+                    </view>
+                    <view class='Rightwords' data-id='2' bindtap='chooseId'>
+                        重新上传
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='boxtrueThree'>
+            <image src="{{IDfalsePhoto}}" class='lookId' />
+        </view>
+    </view>
+    <button class='contaiBtn' bindtap='btnAddData' wx:if='{{showModel}}'>提交修改</button>
+    <view class='contaiWords'>
+        内容仅供于本人提现
+    </view>
+</view>

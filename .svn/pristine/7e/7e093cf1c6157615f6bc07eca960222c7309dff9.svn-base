@@ -1,0 +1,612 @@
+//index.js
+//获取应用实例
+const app = getApp()
+
+Page({
+    data: {
+        tabbar: {},
+        size: 14,
+        interval: 20, // 时间间隔
+        textBottom: '做个实惠的社群',
+        textTop: "2栋102老冯",
+        FansNum: 309, //粉丝数量
+        OrderNum: 200, // 订单数量
+        currentTab: 0,
+        heightWindow: 0,
+        index: 0,
+        words: true, // 控制输入框的icon
+        MoreImg: ['../../images/More.png'],
+        top: 0,
+        owners: true, //群主和非群主判断 true是群主
+        carNumber: 0,
+        floorstatus: false,
+        dataNum: [{
+            id: 1,
+            words: '9.9元秒抢'
+        }, {
+            id: 2,
+            words: '超级划算'
+        }, {
+            id: 3,
+            words: '全部优惠'
+        }],
+        goodsList: [{
+                id: 1,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            },
+            {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            },
+            {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            },
+            {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            },
+            {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            }, {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            }, {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            }, {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            }, {
+                id: 2,
+                img: ['../../images/bigimg.jpg'],
+                data: '水果大果盘限时抢购',
+                surplusNum: '10',
+                money: '9.9',
+                nderlineNum: '147',
+                Img: [{
+                        index: 1,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 2,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 3,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 4,
+                        img: ['../../images/bigimg.jpg'],
+                    },
+                    {
+                        index: 5,
+                        img: ['../../images/bigimg.jpg'],
+                    }
+                ]
+            }
+        ],
+        fullDiscount: [{
+                id: 1,
+                words: '全部分类'
+            }, {
+                id: 2,
+                words: '生鲜食品'
+            },
+            {
+                id: 3,
+                words: '日用品'
+            }, {
+                id: 4,
+                words: '服装配饰'
+            }, {
+                id: 5,
+                words: '化妆品'
+            }, {
+                id: 6,
+                words: '厂购日'
+            },
+            {
+                id: 6,
+                words: '厂购日1'
+            },
+            {
+                id: 6,
+                words: '厂购日2'
+            },
+            {
+                id: 6,
+                words: '厂购日3'
+            },
+            {
+                id: 6,
+                words: '厂购日4'
+            }
+        ],
+        fullNums: 0, //超级优惠菜单索引
+        Honey: false, // 选择超级优惠的开关
+        phenylLiss: [{
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }, {
+            images: ['../../images/Honey.jpg'],
+            words: '水蜜桃',
+            id: 1
+        }],
+    },
+    //事件处理函数
+
+    onLoad: function(options) {
+        var that = this;
+        app.editTabbar(); // 自定义菜单执行方法
+        that.getHeight();
+
+    },
+    onShow: function() {
+        let that = this;
+        let carnumber = wx.getStorageSync('carNumber');
+        if (carnumber == null || carnumber == '' || carnumber == undefined) {
+
+        } else {
+            that.setData({
+                carNumber: carnumber
+            })
+        }
+    },
+    scrollTwo(e) {
+        console.log(e, 1111111);
+        let goodlist = this.data.goodsList;
+        let that = this;
+        let list = [{
+            id: 1,
+            img: ['../../images/bigimg.jpg'],
+            data: '水果大果盘限时抢购',
+            surplusNum: '10',
+            money: '9.9',
+            nderlineNum: '147',
+            Img: [{
+                    index: 1,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 2,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 3,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 4,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 5,
+                    img: ['../../images/bigimg.jpg'],
+                }
+            ]
+        }, {
+            id: 1,
+            img: ['../../images/bigimg.jpg'],
+            data: '水果大果盘限时抢购',
+            surplusNum: '10',
+            money: '9.9',
+            nderlineNum: '147',
+            Img: [{
+                    index: 1,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 2,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 3,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 4,
+                    img: ['../../images/bigimg.jpg'],
+                },
+                {
+                    index: 5,
+                    img: ['../../images/bigimg.jpg'],
+                }
+            ]
+        }]
+        for (let i = 1; i < list.length; i++) {
+            goodlist.push(list[i])
+        }
+        that.setData({
+            goodsList: goodlist
+        })
+    },
+    swichNav: function(e) {
+        // 这里是头部三大菜单的点击事件
+        var that = this;
+        if (this.data.currentTab === e.target.dataset.current) {
+            return false;
+        } else {
+            that.setData({
+                currentTab: e.target.dataset.current,
+            })
+        }
+        if (that.data.currentTab == 2) {
+            that.setData({
+                Honey: true
+            })
+        } else {
+            that.setData({
+                Honey: false
+            })
+        }
+    },
+    Tapfullount: function(e) {
+        // 这里是全部优惠左边的点击切换事件  点击请求获取数据
+        let that = this;
+        if (that.data.fullNums == e.target.dataset.id) {
+            return false;
+        } else {
+            that.setData({
+                fullNums: e.target.dataset.id
+            })
+        }
+    },
+    getHeight: function() { //获取当前高度
+        var that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = wx.getStorageSync('isIphoneX');
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    heightWindow: systemInfo.windowHeight - 440 / pxToRpxScale - 66 / pxToRpxScale + 20
+                })
+            } else {
+                that.setData({
+                    heightWindow: systemInfo.windowHeight - 440 / pxToRpxScale
+                })
+            }
+        }
+    },
+    bindKeyInput: function(e) {
+        // 输入框选择
+        let that = this;
+        let data = e.detail.value;
+        if (data == '' || data == undefined || data == null) {
+            that.setData({
+                words: true
+            })
+        } else {
+            that.setData({
+                words: false
+            })
+        }
+    },
+    TapShowFriend: function() {
+        //我的好友购买了此商品
+    },
+    tapBindJump: function(e) {
+        // 点击跳转详情
+        wx.showLoading({ title: '正在跳转', mask: 'true' })
+        let id = e.currentTarget.dataset.id;
+        let url = `../commodityDetails/commodityDetails?id=` + id;
+        setTimeout(function() {
+            wx.hideLoading()
+            wx.navigateTo({
+                url: url
+            })
+        }, 1000)
+    },
+    SwiperLissClick: function(e) {
+        // 点解超级优惠选项跳转详情
+        let id = e.currentTarget.dataset.id;
+        // let url = `../commodityDetails/commodityDetails?id=` + id;
+        // setTimeout(function() {
+        //     wx.hideLoading()
+        //     wx.navigateTo({
+        //         url: url
+        //     })
+        // }, 1000)
+
+    },
+    swiperChange: function(e) {
+        let that = this;
+        if (e.detail.source == 'touch') {
+            if (that.data.currentTab == e.detail.current) {
+                return false;
+            } else {
+                that.setData({
+                    currentTab: e.detail.current,
+                })
+            }
+            if (that.data.currentTab == 2) {
+                that.setData({
+                    Honey: true
+                })
+            } else {
+                that.setData({
+                    Honey: false
+                })
+            }
+        }
+    },
+    bindrefresherrefresh: function(e) {
+        let that = this;
+        that.setData({
+            top: e.detail.scrollTop
+        })
+
+    }
+})

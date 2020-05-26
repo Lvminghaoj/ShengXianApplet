@@ -1,0 +1,127 @@
+//index.js
+//获取应用实例
+const app = getApp()
+const time = require("../../utils/util.js");
+Page({
+    data: {
+        tradeName: '越南火龙果"保鲜""高质"', //商品名称
+        prurl: []
+    },
+    //事件处理函数
+
+    onLoad: function(options) {
+        var that = this;
+        that.letoost()
+
+    },
+    async letoost(e) {
+        let that = this;
+        var res = await that.keepConsole();
+        console.log(res)
+    },
+    keepConsole: function(e) {
+        return new Promise((resolve, rejuct) => {
+            setTimeout(() => {
+                console.log('倒计时5秒')
+                resolve('我等完你5秒我再动的')
+            }, 5000)
+        })
+    },
+    async saves() {
+        let that = this;
+
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original'],
+            sourceType: ['camera', 'album'],
+            success(res) {
+                let Img = res.tempFilePaths[0];
+                wx.getImageInfo({
+                        src: Img,
+                        success(Res) {
+                            console.log(111111)
+                            console.log(Res)
+                            console.log(Res.width)
+                            console.log(Res.height)
+                        }
+                    })
+                    // tempFilePath可以作为img标签的src属性显示图片
+                    // const tempFilePaths = res.tempFilePaths;
+                that.save(Img)
+            }
+        })
+    },
+    save: function(img) { // 生成分享大图
+        var that = this;
+        const ctx = wx.createCanvasContext('myCanvas')
+        console.log(ctx)
+        ctx.fillStyle = 'rgb(255,255,255)';
+        // 设置矩形边框
+        // ctx.setStrokeStyle('#fff')
+        // 设置矩形宽高
+        // ctx.strokeRect(0, 0, 400, 200)
+        wx.getSystemInfo({
+            success: function(res) {
+                console.log(res.windowHeight)
+                console.log(res.windowWidth)
+                that.setData({
+                    windowHeight: res.windowHeight,
+                    windowWidth: res.windowWidth
+                })
+            },
+        })
+        var windowHeight = that.data.windowHeight;
+        var windowWidth = that.data.windowWidth;
+
+        ctx.drawImage('../../images/black.jpg', 0, 0, windowWidth, windowHeight)
+        ctx.drawImage(img, 0, (windowHeight - 500) / 2, windowWidth, 500)
+            // 名字设置
+        ctx.setFontSize(16)
+        var datatimeTwo = time.formatTime(new Date().getTime(), 'Y/M/D h:m:s');
+        ctx.fillText(datatimeTwo, windowWidth - ctx.measureText(datatimeTwo).width, (windowHeight - 500) / 2 + 500)
+        var data = '高明区'
+        ctx.fillText(data, windowWidth - ctx.measureText(data).width - ctx.measureText(datatimeTwo).width, (windowHeight - 500) / 2 + 500)
+        var name = '佛山市高明区你猜这个是什么任务了咯我也不知道了咯';
+        if (name.length > 23) {
+            var res = name.slice(0, 23);
+            ctx.fillText(res, 0, (windowHeight - 500) / 2 + 20)
+            var Res = name.slice(24, name.length);
+            ctx.fillText(Res, 0, (windowHeight - 500) / 2 + 36)
+        } else {
+            ctx.fillText(name, 0, (windowHeight - 500) / 2 + 20)
+        }
+        ctx.draw(false, function() {
+            wx.canvasToTempFilePath({
+                canvasId: 'myCanvas',
+                success: function(res) {
+                    console.log(res.tempFilePath);
+                    wx.getImageInfo({
+                        src: res.tempFilePath,
+                        success(Res) {
+                            let ImgArray = that.data.prurl;
+                            console.log(ImgArray)
+                            ImgArray.push(Res.path);
+                            that.setData({
+                                prurl: ImgArray,
+                                showModalStatus: false,
+                                hidden: true
+                            })
+                            console.log(Res)
+                            console.log(Res.width)
+                            console.log(Res.height)
+                        }
+                    })
+
+                }
+            })
+        });
+    },
+    lookimg(e) {
+        let that = this;
+        let prurls = that.data.prurl;
+        wx.previewImage({
+            current: prurls[e.currentTarget.dataset.index], // 当前显示图片的http链接
+            urls: prurls // 需要预览的图片http链接列表
+        })
+    }
+})

@@ -1,0 +1,252 @@
+<view class='Container'>
+	<!-- 顶部盒子部分 -->
+	<view style='position:relative;height:200rpx;' >
+		<view class='ContBox' />
+		<view class='ContBoxOne'>
+			<view class='ContboxCenter'>
+				<view class='ConBoxImgLook'>
+					<image src="../../images/Icon.jpg" class='ImgLook' />
+				</view>
+				<view class='ConboxCenterWords'>
+					<view class='WordsFontSizeOne'>
+						{{textTop}}
+					</view>
+					<view class='WordsFontSizeTwo'>
+						{{textBottom}}
+					</view>
+				</view>
+				<view class='ConBoxCenterRight' wx:if="{{owners}}">
+					<view class='ConBoxList'>
+						<view class='ConBoxCenterFontOne'>
+							{{FansNum}}
+						</view>
+						<view class='ConBoxCenterFontTwo'>
+							粉丝数
+						</view>
+					</view>
+					<view>
+						<view class='ConBoxCenterFontThree'>
+							{{OrderNum}}
+						</view>
+						<view class='ConBoxCenterFontTwo'>
+							订单数
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class='ContarBox'   />
+	<!-- 搜索部分部分 -->
+	<view class='ContarBoxLookSou'>
+		<view class="InputChange">
+			<input
+			 type="text"
+			 placeholder="商品搜索"
+			 class='InputLook'
+			 bindinput='bindKeyInput'
+			/>
+			<icon class="searchcion {{words == true ? 'Show': 'Hide'}} " size='11' type='search' />
+		</view>
+	</view>
+	<view class='ContarBox' />
+	<!-- 商品部分 -->
+	<view class=' {{Honey == true ? "ContarBoxLookSouOneSec" : "ContarBoxLookSouOne "}}'>
+		<view class='ConTatBox'>
+			<view class="swiper-tab">
+				<!--  
+				<view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+					9.9元秒抢
+				</view>
+				<view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+					超级划算
+				</view>
+				<view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">
+					全部优惠
+				</view>
+				-->
+				<view
+				 wx:for='{{dataNum}}'
+				 wx:key='index'
+				 class="tab-item {{currentTab==index ? 'on' : ''}}"
+				 data-current="{{index}}"
+				 bindtap="swichNav"
+				>
+					{{item.words}}
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view style="height:{{heightWindow}}px;overflow:hidden" class=' {{Honey == true ? "CenterWindwSec" : "CenterWindw "}}'>
+		<view class='SwiperBoxLeft' wx:if="{{Honey}}" style='height:{{heightWindow}}px'>
+							<view
+							 class='SwiperBoxLeftWords {{fullNums == index? "Words" : ""}}'
+							 wx:for='{{fullDiscount}}'
+							 wx:key='index'
+							 bindtap='Tapfullount'
+							 data-id='{{index}}'
+							>
+								{{item.words}}
+							</view>
+						</view>
+		<swiper
+		 class="swiper"
+		 current="{{currentTab}}"
+		 bindchange="swiperChange"
+		 style="height:{{heightWindow}}px"
+		>
+			<swiper-item>
+				<scroll-view
+				 scroll-y='true'
+				 style="height:{{heightWindow}}px"
+				 scrollWithAnimation
+				 scrollTop='0'
+				 bindrefresherpulling='scrollOne'
+				 bindscrolltolower='scrollTwo'
+				>
+					<view>
+						<view
+						 class='goodList'
+						 wx:for='{{goodsList}}'
+						 wx:key='index'
+						 bindtap='tapBindJump'
+						 data-id='{{item.id}}'
+						>
+							<image src="{{item.img}}" class='LookImage' />
+							<view class='GoodBox'>
+								<view class='goodBoxOne'>
+									{{item.data}}
+								</view>
+								<view class='goodBoxTwo'>
+									剩余{{item.surplusNum}}件
+								</view>
+							</view>
+							<view class='GoodBoxOne'>
+								<view class='GoodBoxOne2'>
+									<view class='GoodBoxOneFirst'>
+										¥
+									</view>
+									<view class='GoodBoxOneSecond'>
+										{{item.money}}
+									</view>
+									<view class='GoodBoxOneThirt'>
+										¥{{item.nderlineNum}}
+									</view>
+								</view>
+								<view>
+									<button class='GoodBtn'>立即抢购</button>
+								</view>
+							</view>
+							<view class='Zhanwei' />
+							<view class='ShowFriends'>
+								<view style='display:flex;align-items:center'>
+									<image
+									 class='ShowImg'
+									 wx:for='{{item.Img}}'
+									 wx:for-item='cell'
+									 wx:key-index='cell.index'
+									 src="{{cell.img}}"
+									/>
+									<image class='ShowImg' src="{{MoreImg}}" alt="" />
+								</view>
+
+								<view class='ShowWords' bindtap='TapShowFriend'>
+									我的好友购买了此商品 ＞
+								</view>
+							</view>
+							<view class='ContarBoxOne' />
+						</view>
+					</view>
+
+				</scroll-view>
+			</swiper-item>
+
+			<swiper-item>
+				<scroll-view
+				 scroll-y
+				 style="height:{{heightWindow}}px"
+				 scrollWithAnimation
+				 scrollTop='0'
+				>
+					<view>
+						<view
+						 class='goodList'
+						 wx:for='{{goodsList}}'
+						 wx:key='index'
+						 bindtap='tapBindJump'
+						 data-id='{{item.id}}'
+						>
+							<image src="{{item.img}}" class='LookImage' />
+							<view class='GoodBox'>
+								<view class='goodBoxOne'>
+									{{item.data}}
+								</view>
+								<view class='goodBoxTwo  goodBoxWordsFontBlue'>
+									{{item.surplusNum}}万人购买
+								</view>
+							</view>
+							<view class='GoodBoxOne'>
+								<view class='GoodBoxOne2'>
+									<view class='GoodBoxOneFirst'>
+										¥
+									</view>
+									<view class='GoodBoxOneSecond'>
+										{{item.money}}
+									</view>
+									<view class='GoodBoxOneThirt'>
+										¥{{item.nderlineNum}}
+									</view>
+								</view>
+								<view>
+									<button class='GoodBtn'>立即抢购</button>
+								</view>
+							</view>
+							<view class='Zhanwei' />
+
+							<view class='ContarBoxOne' />
+						</view>
+					</view>
+
+				
+				</scroll-view>
+			</swiper-item>
+			<swiper-item>
+				<scroll-view
+				 scroll-y
+				 style="height:{{heightWindow}}px"
+				 scrollTop='0'
+				 bindscroll='bindrefresherrefresh'
+				>
+					<view class='SwiperBoxYouhui'>
+					
+						<view class='SwiperBoxRight'>
+							<view style='display:flex'>
+								<image src="../../images/Honey.jpg" class='HoneyLookImg' />
+							</view>
+							<view class='SwiperBoxWordsKey'>全部分类</view>
+							<view class='SwiperBoxHoney'>
+								<view
+								 class='SwiperBoxHoneyLiss'
+								 wx:for='{{phenylLiss}}'
+								 wx:key='index'
+								 data-id='index'
+								 bindtap='SwiperLissClick'
+								>
+									<image src="{{item.images}}" class='HoneyLissImg' />
+									<view class='HoneyLissWords'>
+										{{item.words}}
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+
+				</scroll-view>
+			</swiper-item>
+		</swiper>
+	</view>
+	<tabbar tabbar="{{tabbar}}" text="{{carNumber}}" />
+</view>
+

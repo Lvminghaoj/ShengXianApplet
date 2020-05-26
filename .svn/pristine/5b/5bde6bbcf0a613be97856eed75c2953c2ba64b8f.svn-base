@@ -1,0 +1,28 @@
+//index.js
+//获取应用实例
+const time = require("../../utils/util.js"); //根据自己项目的位置而定
+import { postData, getData } from '../../utils/https'
+Page({
+    data: {
+        item: [{ id: 1, img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'], time: '2020/03/01 14:23:23', name: '**浩' },
+            { id: 2, img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'], time: '2020/03/01 14:23:23', name: '**浩' },
+            { id: 3, img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'], time: '2020/03/01 14:23:23', name: '**浩' },
+            { id: 4, img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'], time: '2020/03/01 14:23:23', name: '**浩' }
+        ]
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        var datas = 1584944935000;
+        console.log(time.formatTime(datas, 'Y/M/D h:m:s'));
+    },
+    getDatas() {
+        // 发起请求获取数据
+        // let url = '';
+        // let data = {
+        // }
+        // postData(url,data,res=>{
+
+        // })
+    }
+})

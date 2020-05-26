@@ -1,0 +1,26 @@
+//index.js
+//获取应用实例
+
+Page({
+    data: {
+        items: [
+            { name: 'Complaint', value: '投诉' },
+            { name: 'proposal', value: '建议', checked: 'true' },
+        ],
+        EngineeringName: '',
+        cursor: 0
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+
+    },
+    Engineering(e) {
+        console.log(e)
+        let that = this;
+        that.setData({
+            EngineeringName: e.detail.value,
+            cursor: e.detail.cursor
+        })
+    }
+})

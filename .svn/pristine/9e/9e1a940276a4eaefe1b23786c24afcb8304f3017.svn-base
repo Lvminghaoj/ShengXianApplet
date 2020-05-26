@@ -1,0 +1,334 @@
+//index.js
+//获取应用实例
+const app = getApp()
+
+Page({
+    data: {
+        tradeName: '越南火龙果"保鲜""高质""超好吃""不买就浪费了""我一个做页面的都想吃"', //商品名称
+        numberBuyers: '3.3', //购买人数
+        money: '79.9',
+        goodsImg: ['../../images/goods.jpg'],
+        goodlistImg: ['../../images/bigimg.jpg'],
+        List: [{
+                id: 1,
+                img: ['../../images/index.png'],
+                words: '首页'
+            },
+            {
+                id: 2,
+                img: ['../../images/Kefu.png'],
+                words: '客服'
+            },
+            {
+                id: 3,
+                img: ['../../images/share.png'],
+                words: '分享'
+            }
+        ],
+        btnbottom: 0,
+        btnBottoms: 0,
+        iphoneX: wx.getStorageSync('isIphoneX'),
+        show: false, // 控制点击分享按钮
+        showModalStatus: false,
+        animationData: '',
+        ShowList: [{ id: 1, img: ['../../images/Icon.jpg'], words: '发送给朋友' }, { id: 2, img: ['../../images/Icon.jpg'], words: '生成分享大图' }],
+        hidden: false,
+        floorstatus: false, //判断滚动条是否到了显示按钮的位置
+    },
+    //事件处理函数
+
+    onLoad: function(options) {
+        var that = this;
+        console.log(options)
+        that.getHeight();
+        that.onPageScroll()
+    },
+    onPageScroll: function(e) {
+        console.log(e)
+        if (e.scrollTop > 250) {
+            this.setData({
+                floorstatus: true
+            });
+        } else {
+            this.setData({
+                floorstatus: false
+            });
+        }
+    },
+    goTop: function(e) { // 一键回到顶部
+        if (wx.pageScrollTo) {
+            wx.pageScrollTo({
+                scrollTop: 0
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+            })
+        }
+    },
+    getHeight() {
+        // 获取底部固定盒子的高度
+        let that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = that.data.iphoneX;
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    btnbottom: (85 + 68) / pxToRpxScale + 15,
+                    btnBottoms: 68 / pxToRpxScale
+                })
+            } else {
+                that.setData({
+                    btnbottom: 85 / pxToRpxScale + 10,
+                })
+            }
+        }
+
+    },
+    taplistCar: function() {
+        //加入购物车事件
+        let isok = wx.getStorageSync('isOk');
+        if (isok == undefined || isok == '' || isok == null || isok == 'null' || isok == 'undefined') {
+            wx.showModal({
+                title: `您尙未登录`,
+                content: `是否前往登录`,
+                success(res) {
+                    if (res.confirm) {
+                        let url = `../myPage/myPage`;
+                        wx.navigateTo({
+                            url: url
+                        })
+                    }
+                },
+                fail: function() {
+                    console.log('用户电脑点击了取消')
+                }
+            })
+        } else {
+            wx.showToast({
+                title: '添加成功',
+                icon: 'success',
+                duration: 2000
+            });
+        }
+
+    },
+    purchase: function() {
+        //立即购买事件
+        let that = this;
+        let id = that.data.money;
+        let url = `../confirmOrder/confirmOrder?id=` + id;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    taponClick: function(e) {
+        var id = e.currentTarget.dataset.id; //点击的按钮id   1是首页  2是购物车 
+        let that = this;
+        console.log(id)
+        if (id != '' || id != undefined || id != null) {
+            if (id == 1) {
+                let url = `../index/index`;
+                wx.switchTab({
+                    url: url
+                })
+            } else if (id == 2) {
+                console.log(11)
+                let url = `../Customer/Customer`;
+                wx.navigateTo({
+                    url: url
+                })
+
+            } else {
+                that.setData({
+                    show: true,
+
+                })
+                that.showModal()
+            }
+        }
+    },
+    Btn(res) { // 点击分享
+        console.log(res)
+        if (res.from === 'button') {
+
+        }
+        return {
+            title: "",
+            path: 'pages/commodityDetails/commodityDetails'
+        }
+    },
+    showModal: function() { // 底部弹层控制
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "ease-in-out",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(500).step()
+        this.setData({
+            animationData: animation.export(),
+            showModalStatus: true
+        })
+        setTimeout(function() {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export()
+            })
+        }.bind(this), 200)
+    },
+    hideModal: function() { // 触摸盒子的其他部分隐藏
+        this.setData({
+            showModalStatus: false,
+        })
+    },
+
+    CanvasHold(e) { // 点击分享按钮的两个选项
+        let that = this;
+        var id = e.currentTarget.dataset.id; //点击的按钮id   1是首页  2是购物车 
+        if (id == 2) {
+            that.share();
+
+        } else {
+            console.log('用户点击了发送给朋友')
+        }
+    },
+    share: function() { // 生成分享大图
+        wx.showLoading({ title: '正在生成大图', mask: 'true' })
+        var that = this;
+        wx.getSystemInfo({
+            success: function(res) {
+                console.log(res.windowHeight)
+                console.log(res.windowWidth)
+                that.setData({
+                    windowHeight: res.windowHeight,
+                    windowWidth: res.windowWidth
+                })
+            },
+        })
+        var windowWidth = that.data.windowWidth;
+
+
+        const ctx = wx.createCanvasContext('myCanvas')
+            // 设置矩形边框
+        ctx.setStrokeStyle('#fff')
+            // 设置矩形宽高
+        ctx.strokeRect(0, 0, 400, 200)
+
+        let canvas = '../../images/background.jpg';
+        //背景图片
+
+        ctx.drawImage(canvas, 0, 0, 400, 550)
+
+        // 设置文字大小
+        ctx.setFontSize(12)
+            // 设置文字颜色
+        ctx.fillStyle = '#666666';
+        var str = `①保存图片到相册`
+        ctx.fillText(str, (windowWidth - ctx.measureText(str).width) / 2, 435)
+        var strTwo = '②打开微信-“扫一扫'
+        ctx.fillText(strTwo, (windowWidth - ctx.measureText(str).width) / 2, 453)
+        var strThree = '③识别小程序，分享成功'
+        ctx.fillText(strThree, (windowWidth - ctx.measureText(str).width) / 2, 470)
+
+        var cover = '../../images/goods.jpg';
+        // 上层图片
+        ctx.drawImage(cover, 18, 20, 340, 200);
+
+        var cover = '../../images/goods.jpg';
+        // 上层图片
+        ctx.drawImage(cover, 18, 230, 170, 85);
+        var cover = '../../images/goods.jpg';
+        // 上层图片
+        ctx.drawImage(cover, 188, 230, 170, 85);
+
+
+
+        // 名字设置
+        // var name = wx.getStorageSync('companyContacts');
+        // 设置文字大小
+        ctx.setFontSize(15)
+        ctx.fillStyle = 'rgba(102,102,102,1)';
+
+        var name = '越南火龙果啊新鲜又好吃赶紧买的啊不买就没了啊实打实阿斯顿撒阿斯顿撒阿斯顿撒啊实打实啊实打实啊实打实';
+        if (name.length > 16) {
+            var res = name.slice(0, 16);
+            ctx.fillText(res, 31, 355)
+            var Res = name.slice(16, name.length);
+            if (Res.length > 10) {
+                var data = Res.slice(0, 10) + '...'
+            }
+            ctx.fillText(data, 31, 375)
+        } else {
+            ctx.fillText(name, 31, 355)
+        }
+        ctx.setFontSize(16)
+        ctx.fillStyle = '#FF0000';
+        var Money = '¥';
+        ctx.font = 'normal bold 16px sans-serif';
+        ctx.fillText(Money, 290, 370)
+
+        ctx.setFontSize(24)
+        ctx.fillStyle = '#FF0000';
+        var Price = '19.9';
+        ctx.font = 'normal bold 24px sans-serif';
+        ctx.fillText(Price, 305, 370)
+
+        // 小程序二维码
+        var qrcode = '../../images/More.png'
+        ctx.drawImage(qrcode, 40, 410, 80, 80)
+
+        ctx.draw(false, function() {
+            wx.canvasToTempFilePath({
+                canvasId: 'myCanvas',
+                success: function(res) {
+                    console.log(res.tempFilePath)
+                        // wx.previewImage({
+                        //   urls: [res.tempFilePath] // 需要预览的图片http链接列表
+                        // })
+                    setTimeout(function() {
+                        that.setData({
+                            prurl: res.tempFilePath,
+                            showModalStatus: false,
+                            hidden: true
+                        })
+                        wx.hideLoading()
+                    }, 1000)
+                }
+            })
+        });
+
+    },
+    save: function() {
+        var that = this
+        wx.saveImageToPhotosAlbum({
+            filePath: that.data.prurl,
+            success(res) {
+                wx.showModal({
+                    content: '图片已保存到相册，赶紧晒一下吧~',
+                    showCancel: false,
+                    confirmText: '好的',
+                    confirmColor: '#333',
+                    success: function(res) {
+                        if (res.confirm) {
+                            console.log('用户点击确定');
+                            /* 该隐藏的隐藏 */
+                            that.setData({
+                                hidden: false
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    },
+    cancelBit() { // 点击取消按钮
+        let that = this;
+        that.setData({
+            showModalStatus: false
+        })
+    }
+})

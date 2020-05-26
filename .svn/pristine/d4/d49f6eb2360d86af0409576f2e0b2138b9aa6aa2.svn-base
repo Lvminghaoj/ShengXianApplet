@@ -1,0 +1,15 @@
+<view>
+<canvas canvas-id="myCanvas" class='canvas' />
+<!-- 预览分享图 这里就是上图展示的效果   -->
+<!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 这里的样式大家看图就写出来了 -->
+<view class='preview' bindtap='cancel'>
+<view wx:for='{{prurl}}'  wx:key='index'>
+	<image src='{{item}}'  bindtap='lookimg' data-index = '{{index}}' />
+</view>
+	<view>
+		<button size='mini' bindtap='saves' class='primary'>拍摄图片</button>
+	</view>
+</view>
+<!-- 加入购物车弹窗 -->
+</view>
+

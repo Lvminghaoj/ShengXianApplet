@@ -1,0 +1,102 @@
+//index.js
+//获取应用实例
+import { apiObj } from '../../api/api'
+import { postData, getData } from '../../utils/https'
+import { checkAll } from '../../utils/util'
+Page({
+    data: {
+        prurl: [],
+        phoneNumber: '', //手机号码
+        verificationCode: '', //验证码
+        show: true,
+    },
+    //事件处理函数
+
+    onLoad: function(options) {
+        var that = this;
+
+    },
+    getPhoneNumber(e) {
+        // 获取手机号码
+        console.log(e)
+        console.log(e.detail.iv)
+        console.log(e.detail.encryptedData)
+        var sex;
+        if (wx.getStorageSync('gender') == 0) {
+            sex = '女'
+        } else {
+            sex = '男'
+        }
+        postData(apiObj.login, {
+            wxcode: wx.getStorageSync('code'),
+            phone: "",
+            iv: e.detail.iv,
+            encryptedData: e.detail.encryptedData,
+            nickname: wx.getStorageSync('name'),
+            sex: sex,
+            shareName: '',
+            sharePhone: '',
+            headurl: wx.getStorageSync('img')
+        }, res => {
+            console.log(res)
+            wx.setStorageSync('phone', res.phone);
+            wx.setStorageSync('fsNum', res.fsNum);
+            wx.setStorageSync('fsOrder', res.fsOrder);
+            wx.setStorageSync('gradeName', res.gradeName);
+            wx.setStorageSync('isOk', 1);
+            let url = `../myPage/myPage`
+            wx.switchTab({
+                url: url
+            })
+        })
+    },
+    phoneNumber(e) {
+        console.log(e)
+        this.setData({
+            phoneNumber: e.detail.value
+        })
+    },
+    addLogin() {
+        var sex;
+        let that = this;
+        if (checkAll('Phone', that.data.phoneNumber) != true) {
+            wx.showToast({ title: '请输入正确的手机号码', icon: 'none' });
+            return;
+        }
+        if (wx.getStorageSync('gender') == 0) {
+            sex = '女'
+        } else {
+            sex = '男'
+        }
+        postData(apiObj.login, {
+            wxcode: wx.getStorageSync('code'),
+            phone: that.data.phoneNumber,
+            iv: '',
+            encryptedData: '',
+            nickname: wx.getStorageSync('name'),
+            sex: sex,
+            shareName: '',
+            sharePhone: '',
+            headurl: wx.getStorageSync('img')
+        }, res => {
+            console.log(res);
+            wx.setStorageSync('phone', res.phone);
+            wx.setStorageSync('fsNum', res.fsNum);
+            wx.setStorageSync('fsOrder', res.fsOrder);
+            wx.setStorageSync('gradeName', res.gradeName);
+            wx.setStorageSync('isOk', 1);
+
+            let url = `../myPage/myPage`
+            wx.switchTab({
+                url: url
+            })
+        })
+
+    },
+    ModelShow() {
+        this.setData({
+            show: false
+        })
+    }
+
+})

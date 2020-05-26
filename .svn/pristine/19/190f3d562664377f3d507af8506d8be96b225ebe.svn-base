@@ -1,0 +1,39 @@
+<view class="container">
+     <view style='margin-top:30rpx'>
+             <view class='box'>
+                        <view class='boxLeft'>
+                                业绩说明
+                        </view>
+                        <view class='boxRight'>
+                                {{performanceNote}}
+                        </view>
+             </view>  
+               <view class='box' wx:for='{{groupOwnerList}}' wx:key='index'>
+                        <view class='boxLeft'>
+                               {{item.gradeName}}
+                        </view>
+                        <view class='boxRight'>
+                               {{item.num}}
+                        </view>
+             </view>   
+                 
+        </view>
+	<view class='contaiBox'>
+		<view class='contaiWords'>
+			我的业绩
+		</view>
+		 <!-- <view class='contaiWordsTwo' wx:for='{{AchievementsWords}}' wx:key='index'>
+			{{item.name}}    {{item.position}}
+		</view> !-->
+                 <view class='box' wx:for='{{AchievementsWords}}' wx:key='index'>
+                        <view class='boxLeft'>
+                                {{item.name}}
+                        </view>
+                        <view class='boxRight'>
+                                {{item.position}}
+                        </view>
+             </view> 
+	</view>
+   
+</view>
+

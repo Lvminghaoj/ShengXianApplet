@@ -1,0 +1,92 @@
+<view class="container">
+    <view class='containerBox'>
+        <view class='contaiLeft'>
+            <view class='contaiLeftwont' wx:if="{{condition}}">
+                总提现金额(元)
+            </view>
+            <view class='contaiLeftwont' wx:if="{{!condition}}">
+                总收入金额(元)
+            </view>
+            <view style='display:flex;margin-left: 43rpx;margin-top: 10rpx;'>
+                <view class='RNb'>
+                    ¥
+                </view>
+                <view class='cashMoney' wx:if="{{condition}}">
+                    {{cashMoney}}
+                </view>
+                <view class='cashMoney' wx:if="{{!condition}}">
+                    {{cashMoneyTwo}}
+                </view>
+            </view>
+        </view>
+        <view class='contaiRight'>
+            <view class='contaiLeftwont' wx:if="{{condition}}">
+                总提现次数(次)
+            </view>
+            <view class='contaiLeftwont' wx:if="{{!condition}}">
+                总收入次数(次)
+            </view>
+            <view style='display:flex;margin-left: 43rpx;margin-top: 10rpx;'>
+
+                <view class='cashMoneyS' wx:if="{{condition}}">
+                    {{cashNum}}
+                </view>
+                <view class='cashMoneyS' wx:if="{{!condition}}">
+                    {{cashNumTwo}}
+                </view>
+            </view>
+            <view/>
+        </view>
+    </view>
+    <view class='contaiBoxSmall' wx:for="{{items}}" wx:key='index' wx:if='{{condition}}'>
+        <view class='contaiBoxTop'>
+            <view class='topWords'>
+                提现单号:{{item.registerNumber}}
+            </view>
+            <view class='topWords 	{{item.type == 1?"wordsTypeOne":item.type == 0?"wordsTypeTwo":item.type == 2?"wordsTypeThree":""}}'>
+                {{item.type == 0?'审核中':item.type == 1?'已完成':item.type == 2?'未通过':''}}
+            </view>
+        </view>
+        <view class='contaiBoxCenter'>
+            <view class='topWordsOne'>
+                {{item.BankNum}}
+            </view>
+            <view class='topWordsOne'>
+                ¥{{item.money}}
+            </view>
+        </view>
+        <view class='contaiBoxBottom {{item.type == 2?"borderBot":""}}'>
+            <view/>
+            <view class='topWordsS'>
+                {{item.time}}
+            </view>
+        </view>
+        <view class='contaiBoxBottom' wx:if='{{item.type == 2}}'>
+            <view class='topWordsS'>备注信息</view>
+            <view class='topWordsS'>
+                {{item.Remarks}}
+            </view>
+        </view>
+    </view>
+    <view class='contaiBoxSmall' wx:for="{{items}}" wx:key='index' wx:if='{{!condition}}'>
+        <view class='contaiBoxTop'>
+            <view class='topWords'>
+                提现单号:{{item.registerNumber}}
+            </view>
+            <view class='topWords'>
+                {{item.time}}
+            </view>
+        </view>
+        <view class='contaiBoxCenter'>
+            <view class='topWordsOne'>
+                {{item.sourceName}}
+            </view>
+            <view class='topWordsOne'>
+                ¥{{item.money}}
+            </view>
+        </view>
+    </view>
+    <view class="zhanWeiBox" hover-class="none" hover-stop-propagation="false">
+
+    </view>
+</view>

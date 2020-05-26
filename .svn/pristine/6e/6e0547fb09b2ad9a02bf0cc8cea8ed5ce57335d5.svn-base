@@ -1,0 +1,128 @@
+page {
+    background: rgba(244, 243, 243, 1);
+}
+
+.contaiBoxTop {
+    width: 690rpx;
+    background: white;
+    margin: 30rpx;
+}
+
+.box {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+}
+
+.created {
+    background: white;
+    margin: 30rpx;
+}
+
+.boxTwo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 30rpx;
+    height: 100rpx;
+    border-bottom: 1rpx solid rgba(244, 243, 243, 1);
+}
+
+.boxCENTERTwo {
+    width: 400rpx;
+    margin-left: 30rpx;
+}
+
+.cashColor {
+    font-size: 30rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: black;
+}
+
+.cashColorTwo {
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+}
+
+.cashColorThree {
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+}
+
+.LookImg {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.boxLeft {
+    margin-left: 30rpx;
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+}
+
+.boxRight {
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    margin-right: 30rpx;
+}
+
+.boxWords {
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+}
+
+.inputValNum {
+    width: 250rpx;
+}
+
+input {
+    text-align: right;
+}
+
+.contaiBtn {
+    width: 690rpx !important;
+    height: 88rpx;
+    background: rgba(255, 151, 2, 1);
+    border-radius: 44rpx;
+    padding: 0;
+    text-align: center;
+    line-height: 88rpx;
+    margin: 0 30rpx;
+    font-size: 36rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+}
+
+.contaiWords {
+    font-size: 24rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    text-align: center;
+    padding: 10rpx 0;
+}
+
+.LooKimg {
+    width: 60rpx;
+    height: 60rpx
+}
+
+.boxThree {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,59 @@
+<view class="container">
+    <view class='conBox' bindtap='taoshowModal'>
+        <view class='boxLeft'>
+            提供账号
+        </view>
+        <view class='boxRight'>
+            <view class='boxwords'>
+                {{cashName}}
+            </view>
+
+            <image src="../../images/Bottom.png" class='lookImg' />
+        </view>
+    </view>
+    <view class='conBoxOne'>
+        <view class='conBoxWords'>
+            提现金额(元)
+        </view>
+        <view class='conBoxTwo'>
+            <view class='Rnb'>
+                ¥
+            </view>
+            <input type="number" value='{{cashMoney}}' bindinput='cashMoney' />
+        </view>
+        <view class='conBoxThree'>
+            钱包余额 ¥{{money}}
+            <view class='conBoxThreeWords' bindtap='cashmoney'>
+                全部提现
+            </view>
+        </view>
+    </view>
+    <button bindtap='cashMoneyTocake' class='cashMoneyTocake'>确定提现</button>
+    <view class='mack'>
+        内容仅供于提现使用
+    </view>
+    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}" />
+    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+        <view class='commodityWords'>
+            <view class='commodityWordsFrom'>
+                选择银行卡
+            </view>
+            <view class='commodityCenter'>
+                <view class='CommodityFor' wx:for='{{ShowList}}' wx:key='index' bindtap='CanvasHold' data-id='{{index}}'>
+                    <view style='display:flex;align-items:center'>
+                        <view>
+                            <image src="{{item.img}}" class='CommodityLookImg' />
+                        </view>
+                        <view class='commdityFromWOds'>
+                            {{ item.cardType == "DC" ? '储蓄卡': item.cardType == "CC" ? '信用卡': item.cardType == "SCC" ? '准贷记卡': item.cardType == "PC" ? '预付费卡' : ''}}{{item.cardNo}}
+                        </view>
+                    </view>
+                    <view wx:if="{{Index == index}}">
+                        <image src="../../images/true.png" class='lookImgTrue' />
+                    </view>
+                </view>
+            </view>
+            <view class='commodityBottom' style='padding-bottom:{{btnBottoms}}px;' bindtap='cancelBit'>取消</view>
+        </view>
+    </view>
+</view>

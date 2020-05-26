@@ -1,0 +1,46 @@
+<view class="container">
+	<view class='contaiBox'>
+		<view class='contaiWords'>
+			我的业绩
+		</view>
+		<view class='contaiWordsTwo'>
+			{{AchievementsWords}}
+		</view>
+	</view>
+        <view>
+             <view class='box'>
+                        <view class='boxLeft'>
+                                业绩说明
+                        </view>
+                        <view class='boxRight'>
+                                {{performanceNote}}
+                        </view>
+             </view>  
+               <view class='box'>
+                        <view class='boxLeft'>
+                                群主
+                        </view>
+                        <view class='boxRight'>
+                               {{groupOwner}}
+                        </view>
+             </view>   
+               <view class='box'>
+                        <view class='boxLeft'>
+                                区长
+                        </view>
+                        <view class='boxRight'>
+                              {{districtHead}}
+                        </view>
+             </view>   
+
+               <view class='box'>
+                        <view class='boxLeft'>
+                                大区长
+                        </view>
+                        <view class='boxRight'>
+                              {{bigDistrictHead}}
+                        </view>
+             </view>    
+        </view>
+</view>
+

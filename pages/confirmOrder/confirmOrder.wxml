@@ -1,0 +1,101 @@
+<view class="container">
+    <view class='ConTaiBox' wx:if="{{!show}}" bindtap='positionEach'>
+        <view class='ContaiBoxOne'>
+            <view class='ContaiBoxoneLISS'>
+                收货人：{{Name}}
+            </view>
+            <view class='ContaiBoxoneLISSOne'>
+                {{phone}}
+            </view>
+        </view>
+        <view class='ContaiBoxTwo'>
+            <view style='display:flex'>
+                <image src="../../images/Position.png" class='PositionImg' />
+            </view>
+            <view class='ContaiBoxoneLISSTwo'>
+                地址：
+            </view>
+            <view class='ContaiBoxoneLISSoNE'>{{posiTion}}</view>
+        </view>
+    </view>
+    <view class='ConTaiBox' bindtap='posiTionSet' wx:if="{{show}}">
+        <view class='ContaiBoxOneFir'>
+            <image src="../../images/addOne.png" class='addOne' />
+            <view class='ContaiBoxOneFirWords'>
+                添加收货地址
+
+            </view>
+        </view>
+    </view>
+    <view class='ConTaiBoxTwo'>
+        <view class='ContaiBoxThree' wx:for="{{item}}" wx:key='index'>
+            <view>
+                <image src="{{item.goodsImg}}" class='confirmImg' />
+            </view>
+            <view style='width:100%'>
+                <view style='display:flex;'>
+                    <view class='confirmWords'>
+                        {{item.tradeName}}
+                    </view>
+                </view>
+                <view style='display:flex;margin-top: 19rpx;justify-content:space-between;'>
+                    <view style='display:flex;align-items: flex-end;'>
+                        <view class='RenMinBi'>
+                            ¥
+                        </view>
+                        <view class='RGB'>
+                            {{item.money}}
+                        </view>
+                    </view>
+                    <view class='Numbers'>
+                        ×{{item.num}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='ContaiBoxFour'>
+            <view style='width:300rpx;' />
+            <view class='ContaiBoxFourWords'>
+                商品共
+                <view class='WordsNumber'>
+                    {{PriceNumber}}
+                </view>
+                件
+            </view>
+            <view class='ContaiBoxFourFontSize'>
+                合计:
+                <view class='RenMinBiTwo'>
+                    ¥
+                </view>
+                <view class='FourNumber'>
+                    {{priceAdd}}
+                </view>
+
+            </view>
+        </view>
+
+    </view>
+    <view class='Zhanwei' style='height:{{getheight}}px'>
+
+    </view>
+    <view class='ContaiBoxpositionOne {{iphoneX==true?"ContaiBoxpositionOneFir":""}}'>
+        <view class='ContaiBoxposition '>
+            <view class='positionLeft'>
+                <view class='positionLeftBox' />
+                <view class='positionWords'>
+                    金额：
+                    <view class='positionRMB'>
+                        ¥
+                    </view>
+                    <view class='positionWordsNumber'>
+                        {{priceAdd}}
+                    </view>
+                </view>
+            </view>
+            <view class='positionRight'>
+                <view class='Btn' bindtap='WeChatpayment'>去付款</view>
+            </view>
+        </view>
+    </view>
+
+</view>

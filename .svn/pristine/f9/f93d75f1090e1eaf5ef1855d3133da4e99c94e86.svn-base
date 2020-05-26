@@ -1,0 +1,68 @@
+page {
+    background: rgba(244, 243, 243, 1);
+}
+
+.container {
+    width: 690rpx;
+    margin: 30rpx;
+    background: white;
+}
+
+.contaiBoxTop {
+    width: 100%;
+    height: 100rpx;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+    height: 100rpx;
+}
+
+.radio {
+    transform: scale(0.7);
+}
+
+.radios {
+    padding-left: 30rpx;
+}
+
+.contaiBoxBottom {
+    width: 100%;
+    min-height: 200rpx;
+}
+
+.tex {
+    width: 630rpx;
+    height: 230rpx;
+    font-size: 28rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    color: rgba(153, 153, 153, 1);
+    padding: 30rpx;
+}
+
+.Ifont {
+    font-size: 38rpx;
+    color: #333333;
+}
+
+.t_h {
+    font-size: 28rpx;
+    color: #666666;
+}
+
+.contaiBtn {
+    width: 690rpx !important;
+    height: 88rpx;
+    background: rgba(255, 151, 2, 1);
+    border-radius: 44rpx;
+    padding: 0;
+    text-align: center;
+    line-height: 88rpx;
+    margin: 0 30rpx;
+    font-size: 36rpx;
+    font-family: Source Han Sans CN;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+}

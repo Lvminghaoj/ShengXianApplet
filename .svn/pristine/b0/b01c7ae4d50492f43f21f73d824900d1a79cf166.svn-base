@@ -1,0 +1,61 @@
+<view>
+    <view class='ContarBoxLookSou'>
+        <view class="InputChange">
+            <input type="text" placeholder="商品搜索" class='InputLook' bindinput='bindKeyInput' value='{{searchWords}}' bindtap='bindKeyTap' focus='true' />
+            <image src="../../images/delect2.png" class='lookImg' wx:if='{{show}}' bindtap='tapDelect' />
+        </view>
+        <view class='search' bindtap='searchData'> 搜索 </view>
+    </view>
+    <view class='box' wx:if="{{showThree}}" wx:for='{{items}}' wx:key='{{index}}'>
+        <view class='boxCenter' bindtap='tapWordsData' data-code='{{item.code}}'>
+            <view>
+                {{item.name}}
+            </view>
+            <image src="../../images/loginTo.png" class='loginTo' />
+        </view>
+    </view>
+    <view class='searchLook' wx:if="{{showTwo}}">
+        <view class='searchLookTop'>
+            历史搜索
+        </view>
+        <view class='searchLookCenter'>
+            <view class='searchBox' wx:for='{{searchLength}}' wx:key='{{index}}' data-index='{{index}}' bindtap='searchLength'>
+                {{item}}
+            </view>
+        </view>
+    </view>
+    <swiper class="swiper" current="{{currentTab}}" bindchange="swiperChange" style="height:{{heightWindow}}px" wx:if="{{show}}">
+        <swiper-item>
+            <scroll-view scroll-y='true' style="height:{{heightWindow}}px" scrollWithAnimation scrollTop='0' bindrefresherpulling='scrollOne' bindscrolltolower='scrollTwo'>
+                <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style=" flex-wrap: wrap;display: flex;padding:0 20rpx">
+                    <view class='boxLoder' wx:for='{{items}}' wx:key='{{index}}' bindtap='keitShowSwitch' data-code='{{item.code}}'>
+                        <view class="paddLange" hover-class="none" hover-stop-propagation="false">
+                            <image class="lookImgTwo" src="{{item.img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+                        </view>
+                        <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style="padding-left: 15rpx;">
+                            <view class="" hover-class="none" hover-stop-propagation="false">
+                                <view class="boxLoderladdy fontWords" hover-class="none" hover-stop-propagation="false">
+                                    {{item.bizTypeName}}
+                                    <view class="fontWordsTwo" hover-class="none" hover-stop-propagation="false">
+                                        {{item.name}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="boxLoderladdy paddLange" hover-class="none" hover-stop-propagation="false" style="padding-left: 15rpx;">
+                            <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false">
+                                <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false">
+                                    ¥{{item.salePrice}}
+                                    <view class="GoodBoxOneThirt" hover-class="none" hover-stop-propagation="false">
+                                        ¥{{item.marketPrice}}
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+
+</view>

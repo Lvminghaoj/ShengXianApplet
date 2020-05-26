@@ -1,0 +1,17 @@
+<view>
+    <view class="tui-picker-content">
+        <view class="tui-picker-name">日期时间选择器（精确到分）</view>
+        <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+            <view class="tui-picker-detail">
+                选择日期时间: {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}} 32 </view>
+        </picker>
+    </view>
+</view>
+<view class="section">
+    <view class="section__title">日期选择器</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+            当前选择: {{date}}
+        </view>
+    </picker>
+</view>

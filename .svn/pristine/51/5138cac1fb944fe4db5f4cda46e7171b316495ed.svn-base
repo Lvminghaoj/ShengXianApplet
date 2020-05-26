@@ -1,0 +1,63 @@
+//index.js
+//获取应用实例
+const app = getApp()
+
+Page({
+    data: {
+        img: ['../../images/QRcode.png'],
+    },
+    //事件处理函数
+    onShow() {
+        let that = this;
+        // var img = wx.getStorageSync('img');
+        // that.setData({
+        //     img: img
+        // })
+    },
+    onLoad: function() {
+        let that = this;
+
+    },
+    BtnShare(res) {
+        // 点击分享图片链接
+        if (res.from === 'button') {
+
+        }
+        return {
+            title: "",
+            path: 'pages/becomeLeader/becomeLeader'
+        }
+    },
+    Btnsave: function() {
+        //点击分享图片
+        console.log(123)
+        var that = this
+        wx.saveImageToPhotosAlbum({
+            filePath: that.data.img,
+            success(res) {
+                wx.showModal({
+                    content: '图片已保存到相册，赶紧晒一下吧~',
+                    showCancel: false,
+                    confirmText: '好的',
+                    confirmColor: '#333',
+                    success: function(res) {
+                        if (res.confirm) {
+                            console.log('用户点击确定');
+                        }
+                    }
+                })
+            }
+        })
+    },
+    lookPhoto() {
+        console.log(12312312)
+        let that = this;
+        console.log(that.data.img)
+        wx.previewImage({
+            urls: that.data.img,
+            current: that.data.img, // 当前显示图片的http链接
+
+        })
+    }
+
+})

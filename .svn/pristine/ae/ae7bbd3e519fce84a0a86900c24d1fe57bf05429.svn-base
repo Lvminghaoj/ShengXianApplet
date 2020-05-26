@@ -1,0 +1,125 @@
+<scroll-view scroll-y enable-back-to-top='true' bindscroll='scrolltoupper' style="height:{{heightTop}}px" scrollTop='{{scrollTop}}'>
+    <view class='BoxBottomBoxOne {{iphoneX == true ? "BoxBottomBoxOneFir": "BoxBottomBoxOneFirTwo"}}'>
+        <view class="BoxTopCenter" hover-class="none" hover-stop-propagation="false">
+
+        </view>
+        <view class='BoxTopBottomList '>
+            <view class='BottomLeft'>
+                <view class='BottomDlex' wx:for="{{List}}" wx:key="{{index}}" data-id='{{item.id}}' bindtap='taponClick'>
+                    <view>
+                        <view class='BottomImg'>
+                            <image src="{{item.img}}" class='LookImgCenter' />
+                        </view>
+                        <view class='fontSize'>
+                            {{item.words}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class='BottomRight'>
+                <button bindtap="taplistCar" class='BtnOne'>加入购物车</button>
+                <button bindtap="purchase" class='BtnTwo'>立即购买</button>
+            </view>
+        </view>
+    </view>
+    <!-- <swiper class="swiper" current="0" style="height:{{heightTopTwo}}px">
+        <swiper-item>
+            <scroll-view scroll-y  scrollTop='{{scrollTop}}' class="container" bindscroll="scrolltoupper"> -->
+    <view>
+
+        <view class='BoxTopFirst'>
+            <view class='BoxTopLook'>
+                <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+                    <block>
+                        <swiper-item wx:if='{{bizTypeName == "9.9元秒抢"}}'>
+                            <video id="myVideo" src="{{src}}" binderror="videoErrorCallback" danmu-list="{{danmuList}}" show-center-play-btn='{{false}}' show-play-btn="{{true}}" controls picture-in-picture-mode="{{['push']}}" bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+                                bindleavepictureinpicture='bindVideoLeavePictureInPicture'></video>
+                        </swiper-item>
+                        <swiper-item wx:for="{{background}}" wx:key="*this">
+                            <image src="{{item}}" class='LookImg' bindtap='previewImage' data-id='{{index}}' />
+                        </swiper-item>
+                    </block>
+                </swiper>
+            </view>
+            <view class='BoxTopwords'>
+                <view class='wordsLeft'>
+                    {{tradeName}}
+                </view>
+            </view>
+            <view class='wordsBottom'>
+                <view style='display:flex'>
+                    <view class='wordsBox'>
+                        <view class='{{iphoneX == true ? "wordsFuhao" : "wordsFuhaoTwo"}}'>
+                            ¥
+                        </view>
+                        {{money}}
+                    </view>
+                    <view class='{{iphoneX == true ? "GoodListTwo" : "GoodListTwoFirst"}}'>
+                        {{moneys}}
+                    </view>
+                </view>
+                <view class='numberBuyers'>
+                    {{numberBuyers}}万人购买
+                </view>
+            </view>
+        </view>
+        <view class='BoxTopCenter' />
+        <view class='BoxTopBottom'>
+            <image src="{{goodImgThree}}" class='LookImgTwo {{goodImgThree == "" || goodImgThree == undefined ? "noneImg":"" }}' style='height:{{goodImgThree}}rpx' bindtap='previewImage' data-id='3' />
+            <image src="{{goodImgFour}}" class='LookImgTwo {{goodImgFour == "" || goodImgFour == undefined ? "noneImg":"" }}' style='height:{{heightImgFour}}rpx' bindtap='previewImage' data-id='4' />
+            <image src="{{goodImgFive}}" class='LookImgTwo {{goodImgFive == "" || goodImgFive == undefined ? "noneImg":"" }}' style='height:{{heightImgFive}}rpx' bindtap='previewImage' data-id='5' />
+            <image src="{{goodImgSix}}" class='LookImgTwo {{goodImgSix == "" || goodImgSix == undefined ? "noneImg":"" }}' style='height:{{heightImgSix}}rpx' bindtap='previewImage' data-id='6' />
+            <image src="{{goodImgSeven}}" class='LookImgTwo {{goodImgSeven == "" || goodImgSeven == undefined ? "noneImg":"" }}' style='height:{{heightImgSeven}}rpx' bindtap='previewImage' data-id='7' />
+        </view>
+        <button id="shareBtn" open-type="share" bindtap='Btn' style='display:none'>分享</button>
+        <view class='Btns' wx:if="{{show}}">
+            <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}" />
+            <view animation="{{animationDataTwo}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+                <view class='commodityWords'>
+                    <view class='commodityWordsFrom'>
+                        分享
+                    </view>
+                    <view class='commodityCenter'>
+                        <view class='CommodityFor' wx:for='{{ShowList}}' wx:key='index' bindtap='CanvasHold' data-id='{{item.id}}'>
+                            <label for="{{index == 0 ? 'shareBtn' : ''}}">
+								<view>
+									<image src="{{item.img}}" class='CommodityLookImg' />
+								</view>
+								<view class='commdityFromWOds'>
+									{{item.words}}
+								</view>
+							</label>
+                        </view>
+                    </view>
+                    <view class='commodityBottom' bindtap='cancelBit'>取消</view>
+                </view>
+            </view>
+        </view>
+
+        <view class='scrollTop' bindtap='goTop' style='top:{{goTop}}'>
+            <view class="scrollbox" hover-class="none" hover-stop-propagation="false">
+                <image src="../../images/scrollTop.png" class='scroll' />
+                <view class="scrollgoToWords" hover-class="none" hover-stop-propagation="false">
+                    顶部
+                </view>
+            </view>
+        </view>
+        <view class='scrollTopTwo' bindtap='goTocarPage' style='top:{{carTop}}'>
+            <view class="scrollbox" hover-class="none" hover-stop-propagation="false">
+                <image src="../../images/car.png" class='scrollTwo' />
+            </view>
+        </view>
+        <canvas canvas-id="myCanvas" class='canvas' />
+
+        <!-- 预览分享图 这里就是上图展示的效果   -->
+        <!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 这里的样式大家看图就写出来了 -->
+        <view wx:if='{{hidden}}' class='preview' bindtap='cancel'>
+            <image src='{{prurl}}' class='{{iphoneX == true ? "IphonexpreviewImage" : "AnopreviewImage" }} ' />
+            <view>
+                <button size='mini' bindtap='save' class='primary'>保 存</button>
+            </view>
+        </view>
+    </view>
+    <!-- 加入购物车弹窗 -->
+    <view class='BoxTopCenter' style='height:{{heightTopTwo}}px;' />
+</scroll-view>

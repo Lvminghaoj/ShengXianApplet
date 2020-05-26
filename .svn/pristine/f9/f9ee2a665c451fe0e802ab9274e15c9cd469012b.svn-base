@@ -1,0 +1,242 @@
+page {
+    background: rgb(248, 248, 248)
+}
+
+.InputLook {
+    height: 100%;
+    font-size: 28rpx;
+    color: rgb(51, 51, 51);
+    padding-left: 20rpx;
+    border: 1px solid white;
+    border-radius: 20rpx;
+    background: white;
+}
+
+icon {
+    position: absolute;
+    top: 14rpx;
+    left: 30rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.ContarBoxLookSou {
+    background: #ff9001;
+    display: flex;
+    position: relative;
+}
+
+.InputChange {
+    width: 650rpx;
+    height: 55rpx;
+    margin: 20rpx 10rpx;
+    border-radius: 40rpx;
+    position: relative;
+}
+
+.search {
+    font-size: 30rpx;
+    color: white;
+    line-height: 85rpx;
+    display: flex;
+    align-items: center;
+}
+
+.absoluteToCar {
+    width: 24rpx;
+    height: 24rpx;
+    background: white;
+    color: rgb(231, 62, 141);
+    border-radius: 50%;
+    padding: 5rpx;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 10rpx;
+    right: 20rpx;
+    font-size: 24rpx;
+}
+
+.searchLook {
+    padding: 15rpx;
+    background: rgb(244, 243, 243);
+}
+
+.searchLookTop {
+    color: rgb(51, 51, 51);
+    font-size: 28rpx;
+    font-weight: 600;
+}
+
+.searchLookCenter {
+    padding: 10rpx;
+    width: 650rpx;
+    border-radius: 30rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchBox {
+    border-radius: 40rpx;
+    padding: 5rpx 20rpx;
+    color: rgb(51, 51, 51);
+    font-size: 13px;
+    background: #ccc;
+    margin: 10rpx;
+}
+
+.lookImg {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 15rpx;
+    right: 18rpx;
+    z-index: 999999;
+}
+
+.loginTo {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.box {
+    margin: 0 20rpx;
+}
+
+.boxCenter {
+    border-bottom: 1rpx solid #ccc;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    padding: 15rpx 0;
+}
+
+.boxLoder {
+    width: 100%;
+    border: 1rpx solid white;
+    border-radius: 22rpx;
+    background: white;
+    margin: 15rpx 9rpx;
+    display: flex
+}
+
+.lookImgTwo {
+    width: 250rpx;
+    height: 250rpx;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 10rpx;
+}
+
+.GoodBoxOneThirt {
+    text-decoration: line-through;
+    margin-left: 20rpx;
+    font-weight: normal;
+    font-size: 26rpx;
+    color: rgb(153, 153, 153);
+}
+
+.boxLoderladdy {
+    display: flex;
+}
+
+.fontWords {
+    background: red;
+    color: white;
+    border-radius: 15rpx;
+}
+
+.fontWordsTwo {
+    background: white;
+    color: rgb(51, 51, 51);
+    margin: 7px 0;
+    font-size: 30rpx;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 120rpx;
+}
+
+.paddLange {
+    padding: 10rpx 0;
+}
+
+.couponTypeName {
+    font-size: 22rpx;
+    border: 1px solid #FF9001;
+    padding: 5rpx 9rpx;
+    border-radius: 20rpx;
+    color: #FF9001;
+    margin-left: 10rpx;
+}
+
+.couponTypeNameTwo {
+    font-size: 22rpx;
+    border: 1px solid red;
+    padding: 5rpx 9rpx;
+    border-radius: 20rpx;
+    color: red;
+    margin-left: 10rpx;
+}
+
+.expressFlag {
+    font-size: 22rpx;
+    border: 1px solid #FF9001;
+    padding: 5rpx 9rpx;
+    border-radius: 20rpx;
+    color: #FF9001;
+    margin-left: 10rpx;
+}
+
+.moneyWords {
+    color: rgb(231, 62, 141);
+}
+
+.boxloaderFlexJusricty {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addCar {
+    width: 60rpx;
+    height: 60rpx;
+    z-index: 9999;
+}
+
+.computWordsLeaungth {
+    width: 100%;
+    height: 30rpx;
+    color: rgb(153, 153, 153);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.scrollTop {
+    position: fixed;
+    top: 80%;
+    left: -10%;
+    transition: all 1s;
+    border: 1px solid #FF9001;
+    box-shadow: antiquewhite;
+    border-radius: 50%;
+    background: white;
+    padding: 10rpx;
+    z-index: 9999;
+}
+
+.scroll {
+    width: 40rpx;
+    height: 40rpx;
+    display: flex;
+    margin: 0 auto;
+}
+
+.scrollgoToWords {
+    text-align: center;
+    font-size: 22rpx;
+    color: #515151;
+}

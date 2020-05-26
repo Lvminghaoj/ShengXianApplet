@@ -1,0 +1,138 @@
+page {
+    background: rgb(244, 243, 243);
+}
+
+.InputLook {
+    height: 100%;
+    font-size: 28rpx;
+    color: rgb(51, 51, 51);
+    padding-left: 20rpx;
+    border: 1px solid orange;
+    border-radius: 40rpx;
+}
+
+icon {
+    position: absolute;
+    top: 14rpx;
+    left: 30rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.ContarBoxLookSou {
+    border-radius: 10rpx;
+    background: white;
+    display: flex;
+    position: relative;
+}
+
+.InputChange {
+    width: 650rpx;
+    height: 60rpx;
+    margin: 15rpx 10rpx;
+    border-radius: 40rpx;
+    position: relative;
+}
+
+.search {
+    font-size: 26rpx;
+    color: rgb(51, 51, 51);
+    line-height: 90rpx;
+}
+
+.searchLook {
+    padding: 15rpx;
+    background: rgb(244, 243, 243);
+}
+
+.searchLookTop {
+    color: rgb(51, 51, 51);
+    font-size: 28rpx;
+    font-weight: 600;
+}
+
+.searchLookCenter {
+    padding: 10rpx;
+    width: 650rpx;
+    border-radius: 30rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.searchBox {
+    border-radius: 40rpx;
+    padding: 5rpx 20rpx;
+    color: rgb(51, 51, 51);
+    font-size: 13px;
+    background: #ccc;
+    margin: 10rpx;
+}
+
+.lookImg {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 16rpx;
+    right: 18rpx;
+    z-index: 999999;
+}
+
+.loginTo {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.box {
+    margin: 0 20rpx;
+}
+
+.boxCenter {
+    border-bottom: 1rpx solid #ccc;
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx 0;
+}
+
+.boxLoder {
+    margin: 15rpx;
+    width: 45%;
+    border: 1rpx solid #ccc;
+    border-radius: 22rpx;
+    background: white;
+}
+
+.lookImgTwo {
+    width: 250rpx;
+    height: 250rpx;
+    margin: 0 auto;
+    display: flex;
+}
+
+.GoodBoxOneThirt {
+    text-decoration: line-through;
+    margin-left: 20rpx;
+    font-weight: normal;
+    font-size: 26rpx;
+    color: rgb(153, 153, 153);
+}
+
+.boxLoderladdy {
+    display: flex;
+}
+
+.fontWords {
+    background: red;
+    color: white;
+    border-radius: 15rpx;
+}
+
+.fontWordsTwo {
+    padding-left: 20rpx;
+    background: white;
+    color: rgb(51, 51, 51);
+}
+
+.paddLange {
+    padding: 15rpx 0;
+}

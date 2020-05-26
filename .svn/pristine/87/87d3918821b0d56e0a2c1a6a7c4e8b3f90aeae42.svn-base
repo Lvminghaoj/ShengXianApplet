@@ -1,0 +1,91 @@
+//index.js
+//获取应用实例
+import { ChooImg } from '../../utils/https'
+Page({
+    data: {
+        img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'],
+        nickName: "尊贵的会员", //名称
+        identity: '区长', // 身份
+        Superior: '总部', //上级
+        bankCard: true, //银行卡信息
+        authenTication: true, //个人认证
+    },
+    //事件处理函数
+
+    onLoad: function() {
+        let that = this;
+        let authentication = wx.getStorageSync('authentication');
+        let cardCertification = wx.getStorageSync('cardCertification');
+
+        console.log(authentication);
+        // 判断是否已经通过个人认证
+        if (authentication == null || authentication == undefined || authentication == '') {
+            that.setData({
+                authenTication: true
+            })
+        } else {
+            console.log(111)
+            that.setData({
+                authenTication: false
+            })
+        }
+        console.log(that.data.authentication)
+            //判断是否已经通过银行卡认证
+        if (cardCertification == null || cardCertification == undefined || cardCertification == '') {
+            that.setData({
+                bankCard: true
+            })
+        } else {
+            that.setData({
+                bankCard: false
+            })
+        }
+    },
+    onShow() {
+
+    },
+    authenTicationIsok(e) {
+        //点击个人认证
+        console.log(e)
+        let authentication = e.currentTarget.dataset.authentication;
+        let url = `../authentication/authentication?authentication=` + authentication;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    bankCardIsok(e) {
+        // 点击银行卡认证
+        let bankCard = e.currentTarget.dataset.bankCard;
+        let url = `../cardCertification/cardCertification?cardCertification=` + bankCard;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    nickName(e) { // 监听名字
+        this.setData({
+            nickName: e.detail.value
+        })
+    },
+    chooiesImg(e) {
+        let that = this;
+        wx.chooseImage({
+            success(res) {
+                wx.showLoading({
+                    title: '图片正在上传',
+                })
+                const tempFilePaths = res.tempFilePaths;
+                console.log(tempFilePaths)
+                that.setData({
+                    img: tempFilePaths
+                })
+                let url = '';
+                let photos = '';
+                // ChooImg(url,photos,res=>{
+
+                // })
+            }
+        })
+    }
+
+
+})

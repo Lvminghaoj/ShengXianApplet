@@ -1,0 +1,40 @@
+<view>
+	<view class='ContarBoxLookSou'>
+		<view class="InputChange">
+			<input
+			 type="text"
+			 placeholder="商品搜索"
+			 class='InputLook'
+			 bindinput='bindKeyInput'
+			 value='{{searchWords}}'
+			/>
+			<image
+			 src="../../images/delect2.png"
+			 class='lookImg'
+			 wx:if='{{show}}'
+			 bindtap='tapDelect'
+			/>
+		</view>
+		<view class='search' bindtap='ModelTap'> 取消 </view>
+	</view>
+		<swiper
+		 class="swiper"
+		 current="{{currentTab}}"
+		 bindchange="swiperChange"
+		 style="height:{{heightWindow}}px"
+		>
+			<swiper-item>
+				<scroll-view
+				 scroll-y='true'
+				 style="height:{{heightWindow}}px"
+				 scrollWithAnimation
+				 scrollTop='0'
+				 bindrefresherpulling='scrollOne'
+				 bindscrolltolower='scrollTwo'
+				>
+				</scroll-view>
+			</swiper-item>
+	</swiper>
+	
+</view>
+

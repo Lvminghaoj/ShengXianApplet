@@ -1,0 +1,139 @@
+<view class="container">
+    <view class='ConTaiBox'>
+        <view class='ConTaiBoxOne'>
+            <view class='ConTaiBoxOneTop'>
+                <view>
+                    <image src="{{img}}" class='LookImg' />
+                </view>
+                <view wx:if="{{!login}}" style='display:flex;align-items:center'>
+                    <button bindgetuserinfo="bindGetUserInfo" open-type="getUserInfo" class='Btn'>登 录</button>
+                </view>
+                <view style='width:280rpx' wx:if="{{!login}}">
+
+                </view>
+                <view class='ConTaiBoxOneName' wx:if="{{login}}">
+                    {{name}}
+                    <view class='ConTaiBoxImg'>
+                        <image src="../../images/tag.png" class='LookImgTwo' />
+                        <view class='ContaiWords'>
+                            {{posiTion}}
+                        </view>
+                    </view>
+                </view>
+                <view class='ConTaiBoxWOrds' wx:if="{{login}}">
+                    <view style='position:relative' bindtap="lookImgfree">
+                        <image src="../../images/Guis.png" class='LookImgThree' />
+                        <view class='WordsCon'>
+                            查看详情
+                        </view>
+                    </view>
+                </view>
+
+            </view>
+            <view class='ConTaiBoxOneBottom' bindtap='RouterToMywallet'>
+                <view>
+                    <view class='BottomOneWOrds'>
+                        钱包余额 (元)
+                    </view>
+                    <view class='BottomOne'>
+                        {{priceMoney}}
+                    </view>
+                </view>
+                <view class='LookImgEye'>
+                    <image src="../../images/eye.png" class='LookIMG' />
+                </view>
+                <view>
+                    <image src="../../images/bottomTwo.png" class='LookIMGOne' />
+                </view>
+            </view>
+            <view class='ConTaiBoxOneBtn'>
+                <view class='Cbox' wx:for='{{List}}' wx:key='index'>
+                    <view class='CboxWords'>
+                        {{item.words}}
+                    </view>
+                    <view class='CboxWordsTwo'>
+                        {{item.number}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='ConTaiCenter' />
+    <view class='ConTaiCenterTWO'>
+        <view class="myOrderBox myOrderBoxTwo" hover-class="none" hover-stop-propagation="false">
+            <view class="myOrder" hover-class="none" hover-stop-propagation="false">
+                我的订单
+            </view>
+            <view class="myOrderTwo" hover-class="none" hover-stop-propagation="false" data-id='5' bindtap='navRouterOrder'>
+                查看全部
+                <view class="" hover-class="none" hover-stop-propagation="false">
+                    <image src="../../images/bottomTwo.png" class='BottomTwo' />
+                </view>
+            </view>
+
+        </view>
+        <view class="myOrderBox" hover-class="none" hover-stop-propagation="false">
+            <view class='ConTaiListly' wx:for="{{powerList}}" wx:key='index' data-id='{{item.id}}' bindtap='navRouterOrder'>
+                <view class='ContaiList'>
+                    <view>
+                        <image src="{{item.img}}" class='imgGoods' />
+                    </view>
+                    <view class='ListWords'>
+                        {{item.words}}
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class='ConTaiCenterThree'>
+        <view class='ConTaiListlyOne' wx:for="{{powerListTwo}}" wx:key='index' data-id='{{index}}' bindtap='navRouter'>
+            <view class='ContaiListOne'>
+                <view>
+                    <image src="{{item.img}}" class='imgGoods' />
+                </view>
+                <view class='ListWords'>
+                    {{item.words}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='Box' bindtap='onCustomer'>
+        <view>
+            <image src="../../images/yaoqing.png" class='Boximg' />
+        </view>
+        <view class='boxWords'>
+            邀请购买成为群主
+        </view>
+        <view>
+            <image src="../../images/bottomTwo.png" class='Bottom' />
+        </view>
+    </view>
+    <view class='Box' bindtap='onSuggested'>
+        <view>
+            <image src="../../images/font.png" class='Boximg' />
+        </view>
+        <view class='boxWords'>
+            投诉与建议
+        </view>
+        <view>
+            <image src="../../images/bottomTwo.png" class='Bottom' />
+        </view>
+    </view>
+    <view class='Box' bindtap='onAboutUs'>
+        <view>
+            <image src="../../images/about.png" class='Boximg' />
+        </view>
+        <view class='boxWords'>
+            关于我们
+        </view>
+        <view>
+            <image src="../../images/bottomTwo.png" class='Bottom' />
+        </view>
+    </view>
+
+    <view style='width:100%;height:{{bottom}}px;margin-bottom:20rpx;'>
+
+    </view>
+    <tabbar tabbar="{{tabbar}}" text='{{carNumber}}' />
+</view>

@@ -1,0 +1,60 @@
+//index.js
+//获取应用实例
+
+Page({
+    data: {
+        img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'],
+        bankCardname: '', // 银行名称
+        bankCardNum: '', //银行卡账号
+        bankCardwordsName: '', //开户名
+        addCashcare: false // 点击添加银行卡
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        let that = this;
+        let img = wx.getStorageSync('img');
+        if (img == undefined || img == null || img == '') {
+
+        } else {
+            that.setData({
+                img: img
+            })
+        }
+
+
+    },
+    bankSuccess(e) {
+        console.log(e)
+    },
+    colok(e) {
+        //监听输入银行卡名称
+        let that = this;
+        that.setData({
+            bankCardname: e.detail.value
+        })
+    },
+    colokNum(e) {
+        // 银行卡账号
+        let that = this;
+        that.setData({
+            bankCardNum: e.detail.value
+        })
+    },
+    colokName(e) {
+        // 开户名
+        let that = this;
+        that.setData({
+            bankCardwordsName: e.detail.value
+        })
+    },
+    addCashcare() {
+        let that = this;
+        that.setData({
+            addCashcare: true
+        })
+    },
+    btnAddData() {
+        wx.setStorageSync('cardCertification', true) //根据他判断
+    }
+})

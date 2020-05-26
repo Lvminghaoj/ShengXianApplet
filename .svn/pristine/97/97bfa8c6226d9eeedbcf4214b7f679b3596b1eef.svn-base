@@ -1,0 +1,422 @@
+page {
+    background: rgb(244, 243, 243);
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.ContBox {
+    width: 100%;
+    height: 166rpx;
+    background: rgb(255, 151, 2);
+}
+
+.ContBoxOne {
+    width: 690rpx;
+    margin: 0rpx 30rpx;
+    height: 95rpx;
+    position: absolute;
+    top: 45rpx;
+    border-radius: 10rpx;
+}
+
+.ContboxCenter {
+    padding: 30rpx 0;
+    background: white;
+    height: 100%;
+    border-radius: 10rpx;
+    display: flex;
+}
+
+.ConBoxImgLook {
+    padding: 0 15rpx;
+    display: flex;
+}
+
+.ImgLook {
+    width: 86rpx;
+    height: 86rpx;
+}
+
+.WordsFontSizeOne {
+    color: rgb(51, 51, 51);
+    font-size: 34rpx;
+    font-weight: 600;
+    padding: 4rpx 0;
+}
+
+.WordsFontSizeTwo {
+    color: rgb(102, 102, 102);
+    font-size: 22rpx;
+}
+
+.ConboxCenterWords {
+    padding: 0 13rpx;
+    width: 350rpx;
+    border-right: 1rpx solid rgb(242, 242, 242);
+}
+
+.ConBoxCenterRight {
+    display: flex;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.ConBoxCenterFontOne {
+    font-size: 28rpx;
+    color: rgb(5, 196, 237);
+}
+
+.ConBoxCenterFontThree {
+    font-size: 28rpx;
+    color: rgb(255, 0, 0);
+}
+
+.ConBoxCenterFontTwo {
+    font-size: 20rpx;
+    color: rgb(153, 153, 153);
+}
+
+.ConBoxList {
+    padding: 0 33rpx;
+}
+
+.ContarBox {
+    width: 100%;
+    height: 20rpx;
+}
+
+.ContarBoxLookSou {
+    margin: 0 30rpx;
+    height: 100rpx;
+    border-radius: 10rpx;
+    background: white;
+    display: flex;
+}
+
+.ContarBoxLookSouOne {
+    margin: 0 30rpx;
+    height: 100rpx;
+    background: white;
+    display: flex;
+}
+
+.ContarBoxLookSouOneSec {
+    margin: 0 !important;
+    height: 100rpx;
+    background: white;
+    display: flex;
+}
+
+.ContarBoxLook {
+    margin: 0 30rpx;
+    background: white;
+    display: flex;
+}
+
+.InputChange {
+    width: 650rpx;
+    height: 72rpx;
+    background: rgb(244, 243, 243);
+    margin: 15rpx 20rpx;
+    border-radius: 40rpx;
+    position: relative;
+}
+
+.InputLook {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 28rpx;
+    color: rgb(51, 51, 51);
+}
+
+icon {
+    position: absolute;
+    top: 26rpx;
+    left: 240rpx;
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.Show {
+    display: block;
+}
+
+.Hide {
+    display: none;
+}
+
+.ConTatBox {
+    margin: 0 auto;
+    height: 100%;
+    width: 470rpx;
+}
+
+.swiper-tab {
+    display: flex;
+}
+
+.tab-item {
+    width: 33.33%;
+    height: 100%;
+    color: rgb(153, 153, 153);
+    font-size: 26rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.on {
+    font-size: 34rpx;
+    color: rgb(51, 51, 51);
+    position: relative;
+    font-weight: 600;
+}
+
+.on::after {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 6px;
+    content: '';
+    background-color: rgb(255, 151, 2);
+    bottom: 14px;
+    opacity: 0.6;
+}
+
+.CenterWindw {
+    margin: 0 30rpx;
+}
+
+.CenterWindwSec {
+    margin: 0;
+}
+
+.goodList {
+    width: 100%;
+    background: white;
+}
+
+.LookImage {
+    width: 670rpx;
+    height: 331rpx;
+    margin: 10rpx 10rpx;
+}
+
+.GoodBox {
+    margin: 25rpx 10rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.goodBoxOne {
+    font-size: 30rpx;
+    color: rgb(51, 51, 51);
+    font-weight: 600;
+}
+
+.goodBoxTwo {
+    font-size: 24rpx;
+    color: rgb(254, 180, 25);
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.GoodBoxOne {
+    height: 45rpx;
+    margin: 10rpx 10rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.GoodBoxOne2 {
+    display: flex;
+    align-items: flex-end;
+}
+
+.GoodBoxOneFirst {
+    color: rgb(255, 0, 0);
+    font-size: 22rpx;
+    margin-bottom: 2rpx;
+}
+
+.GoodBoxOneSecond {
+    color: rgb(255, 0, 0);
+    font-size: 32rpx;
+}
+
+.GoodBoxOneThirt {
+    text-decoration: line-through;
+    margin-left: 20rpx;
+    font-weight: normal;
+    font-size: 26rpx;
+    color: rgb(153, 153, 153);
+    margin-bottom: 2rpx;
+}
+
+.GoodBtn {
+    width: 142rpx !important;
+    height: 100%;
+    font-size: 22rpx;
+    text-align: center;
+    line-height: 45rpx;
+    padding: 0;
+    background: red;
+    color: rgb(255, 255, 255);
+    float: right;
+    border-radius: 40rpx;
+    min-height: 0 !important;
+}
+
+.Zhanwei {
+    width: 100%;
+    height: 20rpx;
+    border-bottom: 1rpx solid rgb(245, 245, 245);
+}
+
+.ShowFriends {
+    height: 60rpx;
+    margin: 5rpx 10rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ShowImg {
+    width: 40rpx;
+    height: 40rpx;
+    margin: 0 2rpx;
+    border-radius: 50%;
+}
+
+.ShowWords {
+    color: rgb(153, 153, 153);
+    font-size: 24rpx;
+    display: flex;
+    align-items: center;
+}
+
+.ContarBoxOne {
+    width: 100%;
+    height: 20rpx;
+    background: rgb(244, 243, 243);
+}
+
+.goodBoxWordsFontRed {
+    color: rgb(245, 32, 42) !important;
+}
+
+.goodBoxWordsFontBlue {
+    color: rgb(73, 159, 170) !important;
+}
+
+.StanceBox {
+    width: 100%;
+    height: 98rpx
+}
+
+.StanceBoxOne {
+    Width: 100%;
+    height: 430rpx;
+}
+
+.StanceBoxTwo {
+    Width: 100%;
+    height: 530rpx
+}
+
+.SwiperBoxYouhui {
+    width: 100%;
+    display: flex;
+}
+
+.SwiperBoxLeft {
+    /* width: 200rpx;
+    background: rgb(245, 245, 245);
+    z-index: 99999;
+    position: fixed; */
+    width: 200rpx;
+    background: rgb(245, 245, 245);
+    z-index: 99999;
+    position: fixed;
+    overflow-y: srcoll;
+    overflow-x: hidden;
+}
+
+.SwiperBoxRight {
+    width: 550rpx;
+    background: white;
+    margin-left: 200rpx;
+}
+
+.SwiperBoxLeftWords {
+    width: 200rpx;
+    height: 108rpx;
+    color: rgb(51, 51, 51);
+    font-size: 30rpx;
+    text-align: center;
+    line-height: 100rpx;
+}
+
+.Words {
+    color: rgb(255, 151, 2);
+    position: relative;
+}
+
+.Words::after {
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 0;
+    height: 0;
+    content: "";
+    border-width: 6px;
+    border-color: rgb(255, 151, 2);
+    border-right-width: 0;
+    border-style: dashed;
+    border-left-style: solid;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.HoneyLookImg {
+    width: 490rpx;
+    height: 217rpx;
+    margin: 0 auto;
+    border-radius: 10rpx;
+}
+
+.SwiperBoxWordsKey {
+    color: rgb(51, 51, 51);
+    font-size: 30rpx;
+    margin-left: 30rpx;
+    margin-top: 40rpx;
+}
+
+.SwiperBoxHoney {
+    margin: 20rpx auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.SwiperBoxHoneyLiss {
+    width: 33.33%;
+}
+
+.HoneyLissImg {
+    width: 75rpx;
+    height: 75rpx;
+    border-radius: 50%;
+}
+
+.HoneyLissWords {
+    color: rgb(51, 51, 51);
+    font-size: 24rpx;
+    margin-bottom: 40rpx;
+}
+
+.scroll-view {
+    width: 100%;
+}

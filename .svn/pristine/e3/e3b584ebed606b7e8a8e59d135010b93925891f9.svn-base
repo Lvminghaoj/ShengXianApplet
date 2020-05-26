@@ -1,0 +1,285 @@
+.BoxTopLook {
+    width: 100%;
+    height: 404rpx;
+}
+
+.LookImg {
+    width: 100%;
+    height: 100%
+}
+
+.BoxTopwords {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wordsLeft {
+    font-size: 30rpx;
+    padding: 25rpx 30rpx;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+    display: flex;
+    justify-content: space-between;
+}
+
+.numberBuyers {
+    color: rgb(255, 0, 0);
+    font-size: 28rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+}
+
+.wordsBox {
+    padding: 0rpx 30rpx;
+    display: flex;
+    font-size: 48rpx;
+    color: rgb(255, 0, 0);
+    font-weight: 600;
+}
+
+.wordsFuhao {
+    font-size: 32rpx;
+    margin-top: 17rpx;
+}
+
+.GoodListTwo {
+    text-decoration: line-through;
+    margin-left: 20rpx;
+    font-weight: normal;
+    font-size: 26rpx;
+    color: rgb(153, 153, 153);
+    margin-top: 20rpx;
+}
+
+.wordsBottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.BoxTopCenter {
+    width: 100%;
+    height: 15rpx;
+    background: rgb(244, 243, 243);
+}
+
+.BoxTopBottom {
+    width: 100%;
+}
+
+.LookImgTwo {
+    width: 100%;
+    height: 500rpx;
+}
+
+.BoxTopBottomList {
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+    z-index: 9999;
+}
+
+.BottomLeft {
+    width: 40%;
+    height: 100%;
+    display: flex;
+}
+
+.BottomRight {
+    width: 60%;
+    height: 100%;
+    background: pink;
+    display: flex;
+}
+
+.BottomDlex {
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+.LookImgCenter {
+    width: 48rpx;
+    height: 48rpx;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 8rpx;
+}
+
+.fontSize {
+    color: rgb(102, 102, 102);
+    font-size: 20rpx;
+}
+
+.BtnOne {
+    width: 230rpx;
+    height: 100%;
+    background: rgb(255, 151, 2);
+    font-size: 28rpx;
+    border-radius: 0%;
+    line-height: 90rpx;
+    color: rgb(255, 255, 255);
+}
+
+.BtnTwo {
+    width: 220rpx;
+    height: 100%;
+    background: rgb(224, 0, 0);
+    font-size: 28rpx;
+    border-radius: 0%;
+    line-height: 98rpx;
+    color: rgb(255, 255, 255);
+}
+
+button {
+    box-sizing: inherit;
+    height: 98rpx !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.BoxBottomBoxOne {
+    width: 100%;
+    height: 85rpx;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    /* z-index: 9999; */
+}
+
+.BoxBottomBoxOneFir {
+    height: 166rpx;
+}
+
+.BoxBottomBoxOneFirTwo {
+    height: 100rpx;
+}
+
+.preview button {
+    margin: 0 20rpx;
+    border-radius: 50px;
+    background-color: #ee2a65;
+    width: 40%;
+    line-height: 98rpx;
+}
+
+.commodity_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9;
+    color: #fff;
+}
+
+.commodity_attr_box {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: #fff;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    padding-bottom:20rpx;
+}
+
+.commodityWords {
+    height: 100%;
+    margin: 0 20rpx;
+}
+
+.commodityWordsFrom {
+    padding: 20rpx;
+    border-bottom: 1rpx solid rgb(224, 224, 224);
+    color: rgb(31, 31, 31);
+    font-size: 40rpx;
+}
+
+.CommodityLookImg {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.commdityFromWOds {
+    color: rgb(78, 80, 85);
+    font-size: 32rpx;
+}
+
+.commodityCenter {
+    width: 100%;
+    display: flex;
+}
+
+.CommodityFor {
+    width: 50%;
+    text-align: center;
+    padding: 40rpx 0;
+}
+
+.commodityBottom {
+    width: 100%;
+    text-align: center;
+    color: #4169E1;
+    font-size: 32rpx;
+    border-top: 1rpx solid rgb(224, 224, 224);
+    line-height: 80rpx;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 999999rpx;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.preview image {
+    width: 80%;
+    height: 80%;
+    margin: 100rpx auto;
+    margin-bottom: -100rpx;
+    
+}
+
+.primary {
+    border-radius: 50px;
+    background-color: #ee2a65;
+    width: 40%;
+    line-height: 98rpx;
+    color: #fff;
+}
+
+.scrollTop {
+    position: fixed;
+    top: 75%;
+    right: 0%;
+}
+
+.scroll {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.noneImg {
+    display: none
+}

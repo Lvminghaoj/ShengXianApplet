@@ -1,0 +1,64 @@
+<view class="container">
+    <view class='contaiNerBox'>
+        <view class='box' bindtap='chooiesImg'>
+            <view class='boxLeft'>
+                头像
+            </view>
+            <view class='boxRight'>
+                <image src="{{img}}" class='LookImg' />
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                名字
+            </view>
+            <view class="inputValNum" hover-class="none" hover-stop-propagation="false">
+                {{nickName}}
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                身份
+            </view>
+            <view class='boxRight'>
+                {{identity}}
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                上级
+            </view>
+            <view class='boxRight'>
+                {{Superior}}
+            </view>
+        </view>
+        <view class='box' bindtap='bankCardIsok'>
+            <view class='boxLeft'>
+                银行卡信息
+            </view>
+            <view class='boxRight'>
+                <view class='boxWords boxOne' wx:if="{{bankCard}}">
+                    编辑信息
+                    <image src="../../images/bottomOrange.png" class='Bottom' />
+                </view>
+                <view class='boxWords ' wx:if="{{!bankCard}}">
+                    查看信息
+                </view>
+            </view>
+        </view>
+        <view class='box' bindtap='authenTicationIsok'>
+            <view class='boxLeft'>
+                个人认证
+            </view>
+            <view class='boxRight'>
+                <view class='boxWords boxOne' wx:if="{{authenTication}}">
+                    去认证
+                    <image src="../../images/bottomOrange.png" class='Bottom' />
+                </view>
+                <view class='boxWords ' wx:if="{{!authenTication}}">
+                    查看认证
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

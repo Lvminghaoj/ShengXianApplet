@@ -1,0 +1,43 @@
+// var rootPath = 'http://192.168.1.32:8080/ebm/api/';
+var rootPath = 'http://192.168.1.91:8080/ebm/api/';
+// const rootPath = 'http://119.23.110.85/ebm/api/';
+// var rootPath = 'http://192.168.1.90:8080/ebm/api/'
+// var rootPath = 'https://www.powerboy.vip/ebm/api/'
+const apiObj = {
+    login: rootPath + 'user/wxLogin', // 登录
+    queryFans: rootPath + 'user/queryFans', // 我的粉丝
+    queryPerformance: rootPath + 'user/queryPerformance', // 我的业绩列表
+    queryPerformanceCount: rootPath + 'user/queryPerformanceCount', // 我的业绩人数
+    shopLists: rootPath + 'home/shopLists', // 商品列表
+    shopDetail: rootPath + 'home/shopDetail', // 商品详情
+    menu3: rootPath + 'bizType/menu3', // 首页三大菜单
+    myOrderList: rootPath + 'order/myOrderList', // 我的订单(本人)  0：待支付 1：待发货 2：发货中 3：完成 4:取消
+    fsOrderList: rootPath + 'order/fsOrderList', // 我的订单(粉丝)  0：待支付 1：待发货 2：发货中 3：完成 4:取消
+    leftMenu: rootPath + 'productCatatory/leftMenu', // 首页 根据左边菜单右边栏信息 里面包含1级2级3级
+    saveShoppingTrolley: rootPath + 'order/saveShoppingTrolley', // 加入购物车/修改购物车
+    queryShoppingTrolley: rootPath + 'order/queryShoppingTrolley', // 查询购物车数量
+    delShoppingTrolley: rootPath + 'order/delShoppingTrolley', // 删除购物车物品
+    // 
+    queryUserAuth: rootPath + 'user/queryUserAuth', // 获取身份证信息
+    updateUserAuth: rootPath + 'user/saveUserAuth', // 提交身份证信息  不传code就是新增  传code就是修改
+    queryBank: rootPath + 'mine/queryBank', // 查询银行卡信息
+    updateBank: rootPath + 'mine/updateBank', // 新增修改银行卡信息
+    queryBankList: rootPath + 'mine/queryBankList', // 新增修改银行卡信息
+    personal: rootPath + 'mine/personal', // 基本信息
+    // 
+    feedback: rootPath + 'user/feedback', // 投诉与建议
+    queryWallet: rootPath + 'user/queryWallet', // 我的钱包 累计提现余额、提现中余额、已经提现余额、总收入
+    withdrawDeposit: rootPath + 'user/withdrawDeposit', // 提现余额
+    queryWithdrawDeposit: rootPath + 'user/queryWithdrawDeposit', // 收入明细
+    queryMemberIncome: rootPath + 'user/queryMemberIncome', // 提现明细
+    shopSearchHistory: rootPath + 'home/shopSearchHistory', // 获取历史记录查询
+    queryCount: rootPath + 'home/queryCount', //获取我的页面的单数
+    mySearchOrder: rootPath + 'order/mySearchOrder', // 我的订单查询
+    myFsSearchOrder: rootPath + 'order/myFsSearchOrder', // 我的订单查询(fans)
+
+
+
+}
+module.exports = {
+    apiObj
+}

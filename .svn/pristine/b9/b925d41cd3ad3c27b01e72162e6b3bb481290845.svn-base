@@ -1,0 +1,57 @@
+function postData(url, data, Fn) {
+    wx.request({
+        //项目的真正接口，通过字符串拼接方式实现
+        url: url,
+        header: {
+            "content-type": "application/json;charset=UTF-8"
+        },
+        data: data,
+        method: 'POST',
+        success(res) {
+            let data = res.data;
+            if (data.code == 'SUCCESS') {
+                Fn(data)
+            } else {
+                wx.showToast({
+                    title: data.msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        }
+    })
+}
+// 调用方法 postData(url,data,function(res){console.log(res)})
+
+//GET请求，不需传参，直接URL调用，
+function getData(url, res) {
+    wx.request({
+        url: url,
+        header: {
+            "content-type": "application/json;charset=UTF-8"
+        },
+        method: 'GET',
+        success: res
+    })
+}
+
+function ChooImg(url, temFilePath, res) {
+    wx.uploadFile({
+        url: url,
+        filePath: temFilePath,
+        name: 'file',
+        header: {
+            'content-type': 'application/x-www-form-urlencoded'
+        },
+        formData: {},
+        success: res
+    })
+}
+
+
+module.exports = {
+    postData,
+    getData,
+    ChooImg
+
+}

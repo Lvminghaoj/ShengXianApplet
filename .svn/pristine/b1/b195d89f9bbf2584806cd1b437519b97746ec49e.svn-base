@@ -1,0 +1,94 @@
+//index.js
+//获取应用实例
+
+Page({
+    data: {
+        money: 500.00,
+        cashMoney: 0,
+        cashName: '',
+        showModalStatus: false,
+        ShowList: [{ id: 0, img: ['../../images/cash.jpg'], words: '建设银行 储畜卡 (8580)' }, { id: 1, img: ['../../images/cash.jpg'], words: '建设银行 储畜卡 (8580)' }],
+        btnBottoms: 0,
+        Index: 0
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        let that = this;
+        that.getHeight();
+
+    },
+    getHeight() {
+        // 获取底部固定盒子的高度
+        let that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = that.data.iphoneX;
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    btnBottoms: 68 / pxToRpxScale
+                })
+            }
+        }
+
+    },
+    cancelBit() { // 点击取消按钮
+        let that = this;
+        that.setData({
+            showModalStatus: false
+        })
+    },
+    cashMoneyTocake() {
+        let that = this;
+        let money = that.data.cashMoney; // 提现的金额
+    },
+    cashmoney() {
+        // 点击全部提现
+        let that = this;
+        that.setData({
+            cashMoney: that.data.money
+        })
+    },
+    showModal: function() { // 底部弹层控制
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "ease-in-out",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(500).step()
+        this.setData({
+            animationData: animation.export(),
+            showModalStatus: true
+        })
+        setTimeout(function() {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export()
+            })
+        }.bind(this), 200)
+    },
+    hideModal: function() { // 触摸盒子的其他部分隐藏
+        this.setData({
+            showModalStatus: false,
+        })
+    },
+    taoshowModal() {
+        // 点击选择银行卡弹起框
+        let that = this;
+        that.setData({
+            showModalStatus: true
+        })
+    },
+    CanvasHold(e) {
+        //点击选择银行卡
+        let id = e.currentTarget.dataset.id;
+        let that = this;
+        that.setData({
+            Index: id,
+            cashName: that.data.ShowList[id].words
+        })
+    },
+})

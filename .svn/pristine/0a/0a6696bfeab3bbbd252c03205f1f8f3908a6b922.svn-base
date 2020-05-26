@@ -1,0 +1,58 @@
+//index.js
+//获取应用实例
+import { postData, getData } from '../../utils/https'
+Page({
+    data: {
+        addNum: 100.00, // 总收入
+        CashNum: 100.00, //已经提现
+        CashinNum: 0.00, //提现中
+        cashAddnum: 10010.00, //累计提现
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+
+    },
+    getDatas() {
+        // let url = '';
+        // let data = {
+
+        // };
+
+        // postData(url,data,res=>{
+
+        // })
+    },
+    tapincomeDetails(e) {
+        console.log(e)
+        let id = e.currentTarget.dataset.id;
+        // 点击收入明细跳转
+        let url = `../incomeDetails/incomeDetails?id=` + id;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    cashWithdrawal() {
+        let cardCertification = wx.getStorageSync('cardCertification');
+        console.log(cardCertification)
+        if (cardCertification == undefined || cardCertification == '' || cardCertification == null) {
+            wx.showModal({
+                title: `您尚未认证银行卡信息`,
+                content: `请前往认证`,
+                success(res) {
+                    if (res.confirm) {
+                        let url = `../cardCertification/cardCertification`;
+                        wx.navigateTo({
+                            url: url
+                        });
+                    }
+                }
+            })
+        } else {
+            let url = `../cashWithdrawal/cashWithdrawal`;
+            wx.navigateTo({
+                url: url
+            });
+        }
+    }
+})

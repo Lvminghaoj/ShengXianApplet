@@ -1,0 +1,40 @@
+<view class="container">
+    <view class="ContainerBox">
+        <view class='BoxTop'>
+            <view class='BoxCenter'>
+                <view class='BoxCenterWords'>
+                    客服热线
+                </view>
+                <view class='BoxCenterImgWords'>
+                    <view bindtap='bindViewTap' data-iphone='{{iphone}}'>
+                        {{iphone}}
+                    </view>
+                    <image src="../../images/iphone.png" class='LookImg' />
+                </view>
+
+            </view>
+            <view class='BoxBottom'>
+                <view class='BoxCenterWordsOne'>
+                    客服二维码
+                </view>
+                <view style='display:flex'>
+                    <image src="{{showImg}}" class="Img" bindtap='showImages' />
+                </view>
+                <view class='BoxCenterWordsTwo'>
+                    保存图片,扫描识别二维码
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+<!--
+<canvas canvas-id="myCanvas" class='canvas'/>
+<view hidden='{{hidden}}' class='preview' bindtap='cancel'>
+  <image src='{{prurl}}' mode='widthFix'></image>
+  <view>
+  <button type='primary' size='mini' bindtap='share'>保存分享</button>
+  </view>
+</view>
+-->

@@ -1,0 +1,113 @@
+//index.js
+//获取应用实例
+const app = getApp()
+import { apiObj } from '../../api/api';
+import { postData } from '../../utils/https';
+Page({
+    data: {
+        img: [],
+        img1: '../../images/KeepImg.png',
+        base: '77+9UE5HDQoaCgAAAA1JSERSAAAAfgAAACQIAwAAAHjvv71+KwAAAGNQTFRF77+977+977+977+977+977+9SnDvv70NQO+/vTtk77+977+977+92bPvv73vv71o77+977+977+977+977+977+977+977+9HEzvv73vv73vv73mlavvv73vv73vv73vv7/vv73vv73vv73vv73vv73vv73fj++/ve+/ve+/ve+/ve+/vX9/fwAAADAwMBAQEEBAQHBwcCtY77+9UFBQ77+977+977+9ICAgYGBgWXzvv73vv73vv73vv71377+977+9aXjvv70wAAAAAWJLR0QU77+977+977+9NQAAAAlwSFlzAAAASAAAAEgARu+/vWs+AAAC77+9SURBVFjvv73vv73vv71677+9MAxGXQLvv73vv70Tb++/vS3vv73LtO+/ve+/ve+/vSM5C18ZGO+/vRvvv73vv70IUe+/ve+/vVjvv71l77+9euqppx7vv73vv73vv70wDO+/ve+/vUPYr++/ve+/vWbvv73vv73vv70FbO+/ve+/ve+/vXDvv73vv73vv70h77+977+9e++/vX8N77+9Hu+/vX8b77+9S++/vVHvv73vv71OL++/ve+/ve+/vTok77+977+9Ru+/ve+/vW5UVu+/vT7vv73vv73vv73vv71hOO+/vW/vv73vv73vv70aMEzvv706XBTvv70i77+9UkAk77+977+9IO+/vUfvv73vv71JCDp177+977+977+9DVzvv70u77+9c0F/77+977+977+9PD8SUSnvv71MXWLvv73vv73vv73vv71r77+9YEfHnhbvv70f77+9Ue+/vRJlbBBQKx9jaNec77+9Le+/ve+/ve+/vXbvv713eu+/vU8jKTXvv70T77+977+977+9E0MHBO+/vT5gZTLvv71FLEzvv73vv71M77+9Ymvvv73vv71M77+9AF3vv70i77+977+9Qldq5r+oc3jvv71Td++/vQln77+9B1ViHzguURxuSDAF77+9De+/ve+/vSlxJELvv73vv70/77+9Z++/vV7vv73vv73vv707du+/ve+/ve+/vT3vv70ga++/vQlvK++/vTtL77+9JWHvv73vv71RR++/vXUgX08TXe+/ve+/vc2O77+9C33vv73vv70F36Dvv73vv71TDE7vv73vv719FnwI77+9Yu+/vVHvv71d77+977+9CHAJ77+9Wu+/vXIrfmV+He+/vVjvv73vv70z77+977+977+9YB8b77+9Pnbvv70577+977+9eA3vv70D77+977+9WCVGQe+/ve+/ve+/ve+/ve+/vcOy77+9ZO+/ve+/ve+/ve+/ve+/ve+/vVrvv73vv73vv73vv70cYu+/vWsa77+977+9CO+/ve+/vRhLEmPvv73vv70g77+977+977+977+9ae+/vVnvv73Xtgtv77+977+9R33vv73CqO+/ve+/ve+/ve+/ve+/ve+/ve+/vVjvv70977+9bFlJYyJ377+90K4tzZh1YyVq77+977+9Sd2i77+9fS/vv71N77+9Vmsa77+9XBzvv70BaXAZ77+9Y++/vUADTy40cO+/vXoH77+9Fu+/ve+/vSUx77+977+9ISPvv70mU27vv73vv73vv71677+9QnRSMGRD77+9VgAS77+9Me+/ve+/vWRjNe+/vXd3a++/vXFTDdaRD3nvv71k77+9VhQC77+9C++/vUvvv73vv73vv73vv73vv71H77+9cO+/ve+/vXTvv70w77+9Su+/vcudPQnvv73vv70G77+977+9JAVF77+977+977+977+9LBUMYyMdGu+/vRXvv71+1rZSCQnvv70+77+9Td6r77+9CX3vv71677+977+9YO+/vQLvv73vv71877+9Pe+/vQzvv70n8LmMue+/ve+/vTbvv73vv719UXwaej7vv73vv70G77+9Cu+/ve+/vSbvv71P77+9Su+/ve+/vV7XtA/vv73vv73vv73XkgXvv71lBe+/ve+/',
+        iphoneX: true,
+    },
+    //事件处理函数
+    onShow() {
+        let that = this;
+
+        // var img = wx.getStorageSync('img');
+        // that.setData({
+        //     img: img
+        // })
+
+        let iphoneX = wx.getStorageSync('isIphoneX');
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            that.setData({
+                iphoneX: false
+            })
+        } else {
+            that.setData({
+                iphoneX: true
+            })
+        }
+    },
+    onLoad: function() {
+        // let that = this;
+        // that.getData();
+        // that.setData({
+        //     img1: `data:image/png;base64,${that.data.base}`
+        // })
+    },
+    // getData() {
+    //     let that = this;
+    //     postData(apiObj.invite, { phone: wx.getStorageSync('phone') }, (res) => {
+    //         console.log(res);
+    //         that.setData({
+    //             img1: `data:image/png;base64,${res}`
+    //         });
+    //         // wx.showToast({
+    //         //     title: '添加成功',
+    //         //     icon: 'success',
+    //         //     duration: 2000
+    //         // });
+    //     }, () => {
+    //         console.log('data为空了咯')
+    //     })
+    // },
+    BtnShare(res) {
+        // 点击分享图片链接
+        if (res.from === 'button') {
+
+        }
+        return {
+            title: "",
+            path: 'pages/index/index'
+        }
+    },
+    Btnsave: function() {
+        //点击分享图片
+        console.log(123)
+        var that = this
+        wx.getImageInfo({
+            src: that.data.img1,
+            success(res) {
+                console.log(res)
+                var path = res.path;
+                wx.saveImageToPhotosAlbum({
+                    filePath: path,
+                    success(res) {
+                        console.log(res)
+                        wx.showModal({
+                            content: '图片已保存到相册，赶紧晒一下吧~',
+                            showCancel: false,
+                            confirmText: '好的',
+                            confirmColor: '#333',
+                            success: function(res) {
+                                if (res.confirm) {
+                                    console.log('用户点击确定');
+                                }
+                            }
+                        })
+                    },
+                    fail(e) {
+                        console.log(e)
+                    }
+                })
+            }
+        })
+    },
+    lookPhoto() {
+        let that = this;
+        console.log(that.data.img1)
+        wx.getImageInfo({
+            src: that.data.img1,
+            success(res) {
+                console.log(res)
+                var path = res.path;
+                wx.previewImage({
+                    urls: path,
+                    current: path, // 当前显示图片的http链接
+                })
+            }
+        })
+    }
+})

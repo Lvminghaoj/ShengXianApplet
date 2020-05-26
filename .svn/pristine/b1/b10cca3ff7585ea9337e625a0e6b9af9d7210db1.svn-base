@@ -1,0 +1,21 @@
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="container">
+        <view class='contaiBoxTop'>
+            <radio-group class="radio-group" bindchange="radioChange">
+                <radio class="radio {{index == 0?'radios':''}}" wx:for-items="{{items}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}" color='#FF9702'>
+                    <text>{{item.value}}</text>
+                </radio>
+            </radio-group>
+        </view>
+        <view class='contaiBoxBottom'>
+            <from>
+                <textarea maxlength="200" value='{{EngineeringName}}' bindinput='Engineering' placeholder='输入内容' class='tex'></textarea>
+                <view style='display:flex;padding-bottom:10rpx'>
+                    <view style='width:580rpx'></view>
+                    <span class="t_h"><i class='Ifont'>{{cursor}}</i>/200</span>
+                </view>
+            </from>
+        </view>
+    </view>
+    <button class='contaiBtn' bindtap='btnAddData'>提交内容</button>
+</view>

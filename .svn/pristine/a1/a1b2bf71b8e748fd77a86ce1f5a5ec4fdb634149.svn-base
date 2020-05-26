@@ -1,0 +1,84 @@
+<view class="container">
+	<view class='created'>
+		<view class='boxTwo'>
+			<view>
+				<image src="../../images/cash.jpg" class='LooKimg' />
+			</view>
+			<view class='boxCENTERTwo'>
+				<view class='cashColor'>
+					中国建设银行
+				</view>
+				<view class='cashColorTwo'>
+					储蓄卡
+				</view>
+			</view>
+			<view class='cashColorThree'>
+				****8980
+			</view>
+		</view>
+
+		<view class='boxTwo' bindtap='addCashcare'>
+			<view class='boxThree'>
+				<view>
+					<image src="../../images/cash.png" class='LooKimg' />
+				</view>
+				<view class='boxLeft'>
+					添加您的银行卡
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class='contaiBoxTop'  wx:if='{{addCashcare}}'>
+		<view class='box'>
+			<view class='boxLeft'>
+				银行卡名称
+			</view>
+			<view class='boxRight'>
+				<input
+				 type="text"
+				 bindchange='colok'
+				 value='{{bankCardname}}'
+				 class='inputValNum'
+				 placeholder='输入银行名称'
+				 placeholder-style='text-align:right'
+				/>
+			</view>
+		</view>
+		<view class='box'>
+			<view class='boxLeft'>
+				银行卡账号
+			</view>
+			<view class='boxRight'>
+				<input
+				 type="text"
+				 bindchange='colokNum'
+				 value='{{bankCardNum}}'
+				 class='inputValNum'
+				 placeholder='输入银行卡账号'
+				 placeholder-style='text-align:right'
+				/>
+			</view>
+		</view>
+		<view class='box'>
+			<view class='boxLeft'>
+				开户名
+			</view>
+			<view class='boxRight'>
+				<input
+				 type="text"
+				 bindchange='colokName'
+				 value='{{bankCardwordsName}}'
+				 class='inputValNum'
+				 placeholder='输入银行卡账号'
+				 placeholder-style='text-align:right'
+				/>
+			</view>
+		</view>
+	</view>
+	<button class='contaiBtn' bindtap='btnAddData' wx:if='{{addCashcare}}'>提交修改</button>
+	<view class='contaiWords' wx:if='{{addCashcare}}'>
+		内容仅供于本人提现
+	</view>
+</view>
+

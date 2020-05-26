@@ -1,0 +1,175 @@
+//index.js
+//获取应用实例
+import { apiObj } from '../../api/api'
+import { postData } from '../../utils/https'
+Page({
+    data: {
+        money: 0.00,
+        cashMoney: 0,
+        cashName: '',
+        showModalStatus: false,
+        ShowList: [{ id: 0, img: ['../../images/cash.jpg'], words: '建设银行 储畜卡 (8580)' }, { id: 1, img: ['../../images/cash.jpg'], words: '建设银行 储畜卡 (8580)' }],
+        btnBottoms: 0,
+        Index: 0,
+
+    },
+    //事件处理函数
+    onLoad: function(optiacy) {
+        let that = this;
+        that.setData({
+            money: optiacy.balance
+        })
+    },
+    onShow() {
+        let that = this;
+        that.getDetail();
+        that.getHeight();
+    },
+    cashMoney(e) {
+        let that = this;
+        that.setData({
+            cashMoney: e.detail.value
+        })
+    },
+    getHeight() {
+        // 获取底部固定盒子的高度
+        let that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = that.data.iphoneX;
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    btnBottoms: 68 / pxToRpxScale
+                })
+            }
+        }
+
+    },
+    cancelBit() { // 点击取消按钮
+        let that = this;
+        that.setData({
+            showModalStatus: false
+        })
+    },
+    cashMoneyTocake() {
+        let that = this;
+        if (that.data.cashName == null || that.data.cashName == undefined || that.data.cashName == '') {
+            wx.showToast({
+                title: '请选择提现的卡号',
+                icon: 'none',
+                duration: 2000
+            })
+            return;
+        }
+        let money = that.data.cashMoney * 1; // 提现的金额
+        if (money < 0 || money == 0) {
+            wx.showToast({
+                title: '请填入大于0的金额',
+                icon: 'none',
+                duration: 2000
+            })
+            return;
+        }
+        postData(apiObj.withdrawDeposit, {
+            phone: wx.getStorageSync('phone'),
+            amount: money,
+            memberBankCode: that.data.ShowList[that.data.Index].code
+        }, (res) => {
+            console.log(res)
+        }, (res) => {
+            console.log(res)
+            if (res.code == 200) {
+                wx.navigateBack({
+                    delta: 1
+                });
+                wx.showToast({ title: '提现成功', icon: 'none', duration: 2000 })
+            }
+        })
+
+    },
+    cashmoney() {
+        // 点击全部提现
+        let that = this;
+        that.setData({
+            cashMoney: that.data.money
+        })
+    },
+    showModal: function() { // 底部弹层控制
+        // 显示遮罩层
+        var animation = wx.createAnimation({
+            duration: 200,
+            timingFunction: "ease-in-out",
+            delay: 0
+        })
+        this.animation = animation
+        animation.translateY(500).step()
+        this.setData({
+            animationData: animation.export(),
+            showModalStatus: true
+        })
+        setTimeout(function() {
+            animation.translateY(0).step()
+            this.setData({
+                animationData: animation.export()
+            })
+        }.bind(this), 200)
+    },
+    hideModal: function() { // 触摸盒子的其他部分隐藏
+        this.setData({
+            showModalStatus: false,
+        })
+    },
+    taoshowModal() {
+        // 点击选择银行卡弹起框
+        let that = this;
+        that.setData({
+            showModalStatus: true
+        })
+    },
+    CanvasHold(e) {
+        //点击选择银行卡
+        let id = e.currentTarget.dataset.id;
+        let that = this;
+        that.setData({
+            Index: id,
+            cashName: `${that.data.ShowList[id].cardType == "DC" ? '储蓄卡': that.data.ShowList[id].cardType == "CC" ? '信用卡': that.data.ShowList[id].cardType == "SCC" ? '准贷记卡': that.data.ShowList[id].cardType == "PC" ? '预付费卡' : '' }${that.data.ShowList[id].cardNo}`,
+            showModalStatus: false
+        })
+    },
+    getDetail() {
+        let that = this;
+        postData(apiObj.queryBank, {
+            phone: wx.getStorageSync('phone'),
+        }, (res) => {
+            console.log(res)
+            var bankListShow = [];
+            for (let i = 0; i < res.length; i++) {
+                var obj = {
+                    img: res[i].logo,
+                    cardNo: `(${res[i].cardNo.slice(-4, res[i].cardNo.length)})`,
+                    cardType: res[i].cardType,
+                    code: res[i].code,
+                }
+                bankListShow.push(obj)
+            }
+            that.setData({
+                ShowList: bankListShow,
+                cashName: `${bankListShow[0].cardType == "DC" ? '储蓄卡': bankListShow[0].cardType == "CC" ? '信用卡': bankListShow[0].cardType == "SCC" ? '准贷记卡': bankListShow[0].cardType == "PC" ? '预付费卡' : '' }${bankListShow[0].cardNo}`
+            })
+        }, (res) => {
+            console.log(res)
+        })
+
+        postData(apiObj.queryWallet, { phone: wx.getStorageSync('phone') }, (res) => {
+            console.log(res)
+            that.setData({
+                money: res.balance //余额
+            })
+        }, (res) => {
+            console.log(res)
+        }, res => {
+            console.log(res)
+        })
+    },
+})

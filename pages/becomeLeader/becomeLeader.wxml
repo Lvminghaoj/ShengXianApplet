@@ -1,0 +1,31 @@
+<view class="container">
+    <view class='conTaibox'>
+        <view class='conTaiboxTop'>
+            扫码成为群主
+        </view>
+        <view class='conTaiboxCenter'>
+            <view class='contaiCenter'>
+                <image src="../../images/border.png" class='LookImg' />
+                <image src='{{img1}}' class='lookPhoto' bindtap='lookPhoto' />
+            </view>
+        </view>
+        <view class='contaiBoxBottom'>
+            <view class='contaiBoxBottomCenter'>
+                <view class='fontColor'>
+                    群主条件：
+                </view>
+                <view class='fontColornext'>
+                    1.成功邀请100人；
+                </view>
+                <view class='fontColornext'>
+                    2.自购商品达99元，将自动成为群主
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='ContaiBoxBottomBtn'>
+        <button class='btnShareTwo' open-type="share" bindtap='BtnShare'>分享邀请链接</button>
+        <button class='btnKeepPhotoTwo' bindtap='Btnsave'>分享邀请二维码</button>
+    </view>
+
+</view>

@@ -1,0 +1,142 @@
+//index.js
+//获取应用实例
+import { apiObj } from '../../api/api';
+import { ChooImg, postData } from '../../utils/https'
+Page({
+    data: {
+        img: ['https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eo7Zuo45hxtrLjIz1TFtZicSYwWHv59eJxia6BOmFzicjbWiaq5MmQibUDRHXPfqBafiaFcEMN9BMdpqVhw/132'],
+        nickName: "尊贵的会员", //名称
+        identity: '区长', // 身份
+        Superior: '总部', //上级
+        bankCard: true, //银行卡信息
+        authenTication: true, //个人认证
+    },
+    //事件处理函数
+
+    onLoad: function() {
+        let that = this;
+        let authentication = wx.getStorageSync('authentication');
+        let cardCertification = wx.getStorageSync('cardCertification');
+        that.getDetailTwo();
+        console.log(authentication);
+        // 判断是否已经通过个人认证
+        if (authentication == null || authentication == undefined || authentication == '') {
+            that.setData({
+                authenTication: true
+            })
+        } else {
+            console.log(111)
+            that.setData({
+                authenTication: false
+            })
+        }
+        console.log(that.data.authentication)
+            //判断是否已经通过银行卡认证
+        if (cardCertification == null || cardCertification == undefined || cardCertification == '') {
+            that.setData({
+                bankCard: true
+            })
+        } else {
+            that.setData({
+                bankCard: false
+            })
+        }
+    },
+    onShow() {
+        let that = this;
+        that.getDetail()
+    },
+    authenTicationIsok(e) {
+        //点击个人认证
+        console.log(e)
+        let authentication = e.currentTarget.dataset.authentication;
+        let url = `../authentication/authentication?authentication=` + authentication;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    bankCardIsok(e) {
+        // 点击银行卡认证
+        let bankCard = e.currentTarget.dataset.bankCard;
+        let url = `../cardCertification/cardCertification?cardCertification=` + bankCard;
+        wx.navigateTo({
+            url: url
+        })
+    },
+    nickName(e) { // 监听名字
+        this.setData({
+            nickName: e.detail.value
+        })
+    },
+    chooiesImg(e) {
+        let that = this;
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success(res) {
+                wx.showLoading({
+                    title: '图片正在上传',
+                })
+                const tempFilePaths = res.tempFilePaths;
+                that.setData({
+                    img: tempFilePaths
+                })
+                let url = 'https://www.powerboy.vip/ebm/api/sys/uploadFile/' + wx.getStorageSync('phone') + '/0'
+                let photos = tempFilePaths[0];
+                ChooImg(url, photos, res => {
+                    var img = res.split('"')
+                    that.setData({
+                        img: img[1]
+                    })
+                }, (res) => {
+                    console.log(res)
+                })
+            }
+        })
+    },
+    getDetail() {
+        let that = this;
+        postData(apiObj.personal, { phone: wx.getStorageSync('phone') }, res => {
+            console.log(res);
+            var img;
+            if (res.avtor == '' || res.avtor == undefined || res.avtor == null) {
+                img = wx.getStorageSync('img')
+            } else {
+                img = res.avtor
+            }
+            that.setData({
+                img: img,
+                nickName: res.name,
+                identity: res.gradeName,
+                Superior: res.shareName
+            })
+        })
+        postData(apiObj.queryBank, {
+            phone: wx.getStorageSync('phone'),
+        }, (res) => {
+            console.log(res)
+            wx.setStorageSync('cardCertification', true) //根据他判断
+            that.setData({
+                bankCard: false
+            })
+        }, (res) => {
+            console.log(res)
+        })
+    },
+    getDetailTwo() {
+        // 获取身份证信息
+        let that = this;
+        postData(apiObj.queryUserAuth, { phone: wx.getStorageSync('phone') }, (res) => {
+            console.log(res)
+            wx.setStorageSync('authentication', true) //根据这个来判断是否已通过认证
+            that.setData({
+                authenTication: false
+            })
+        }, (res) => {
+            // 错误的函数
+            console.log(res)
+        })
+    }
+
+})

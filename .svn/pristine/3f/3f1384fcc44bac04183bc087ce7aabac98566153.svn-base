@@ -1,0 +1,32 @@
+<veiw>
+    <view wx:if='{{show}}'>
+        <view class='CenterText'>
+            <view class='centerText'>
+                生鲜购物
+            </view>
+        </view>
+        <view class='wxLogin'>
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">微信手机号便捷登录</button>
+        </view>
+        <view class='borderBottom'>
+
+        </view>
+        <view class='wxLoginTwo'>
+            <button class='btns' bindtap='ModelShow'>手机号登录</button>
+        </view>
+    </view>
+    <view wx:if='{{!show}}' hover-class="none" hover-stop-propagation="false">
+        <view class="CenterTextTwo" hover-class="none" hover-stop-propagation="false">
+            <view class="centerTextTwo" hover-class="none" hover-stop-propagation="false">
+                生鲜购物
+            </view>
+        </view>
+        <view class="inputMargin" hover-class="none" hover-stop-propagation="false">
+            <input type="text" placeholder="请输入手机号码" type="number" value='{{phoneNumber}}' bindchange='phoneNumber' />
+        </view>
+        <!-- <view class="inputMargin" hover-class="none" hover-stop-propagation="false">
+            <input type="text" placeholder="请输入验证码" type="number" value='{{verificationCode}}' bindchange='verificationCode' />
+        </view> -->
+        <button class='contaiBtn' bindtap='addLogin'>登 录</button>
+    </view>
+</veiw>

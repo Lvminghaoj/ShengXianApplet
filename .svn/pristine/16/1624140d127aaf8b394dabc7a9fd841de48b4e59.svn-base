@@ -1,0 +1,28 @@
+//index.js
+//获取应用实例
+import { getData, postData } from '../../utils/https'
+Page({
+    data: {
+        AchievementsWords: '暂无业绩',
+        performanceNote: '业绩说明',
+        groupOwner: '我是群主啊', //群主名称
+        districtHead: '我是区长啊', //区长名称
+        bigDistrictHead: '我是大区长', //大区长
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        let that = this;
+
+
+    },
+    postData() {
+        // let url = '';
+        // let data = {
+
+        // }
+        // postData(url,data,res=>{
+
+        // })
+    }
+})

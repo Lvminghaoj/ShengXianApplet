@@ -1,0 +1,63 @@
+//index.js
+//获取应用实例
+import { getData, postData } from '../../utils/https'
+Page({
+    data: {
+        IDname: '', // 身份证名称
+        IDNum: '', //身份证号码
+        IDturePhoto: '', // 正面
+        IDfalsePhoto: '', // 反面
+        IDtruePhotofalse: false,
+        IDtruePhototrue: false
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+
+    },
+    IDname(e) {
+        //监听输入身份证名称
+        let that = this;
+        that.setData({
+            bankCardname: e.detail.value
+        })
+    },
+    IDNum(e) {
+        // 身份证号码
+        let that = this;
+        that.setData({
+            bankCardNum: e.detail.value
+        })
+    },
+    chooseId(e) {
+        // 点击重新上传图片
+        let id = e.currentTarget.dataset.id;
+        let that = this;
+        wx.chooseImage({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success(res) {
+                const tempFilePaths = res.tempFilePaths;
+
+
+                console.log(id)
+                if (id == 1) {
+                    console.log(id)
+                    that.setData({
+                        IDturePhoto: tempFilePaths,
+                        IDtruePhototrue: true
+                    })
+                } else {
+                    that.setData({
+                        IDfalsePhoto: tempFilePaths,
+                        IDtruePhotofalse: true
+                    })
+                }
+            }
+        })
+    },
+    btnAddData() {
+        wx.setStorageSync('authentication', true) //根据这个来判断是否已通过认证
+    }
+})

@@ -1,0 +1,234 @@
+page {
+    height: 0 !important;
+    background: rgb(233, 242, 244);
+}
+
+.ConTaiBox {
+    width: 690rpx;
+    background: white;
+    margin: 20rpx auto;
+    border-radius: 10rpx;
+}
+
+.ContaiBoxOne {
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26rpx;
+    font-weight: 600;
+}
+
+.ContaiBoxoneLISS {
+    color: rgb(51, 51, 51);
+    width: 400rpx;
+}
+
+.ContaiBoxoneLISSoNE {
+    color: rgb(51, 51, 51);
+    width: 530rpx;
+    padding-bottom: 20rpx;
+}
+
+.ContaiBoxoneLISSOne {
+    color: rgb(2, 145, 225);
+}
+
+.PositionImg {
+    width: 24rpx;
+    height: 27rpx;
+    margin-left: 30rpx;
+    margin-top: 6rpx;
+}
+
+.ContaiBoxTwo {
+    display: flex;
+    font-size: 26rpx;
+    padding-bottom: 15rpx;
+}
+
+.ContaiBoxoneLISSTwo {
+    color: rgb(51, 51, 51);
+    width: 85rpx;
+    font-weight: 600;
+}
+
+.ConTaiBoxTwo {
+    margin: 30rpx auto;
+    width: 690rpx;
+    background: white;
+    border-radius: 10rpx;
+}
+
+.confirmImg {
+    width: 173rpx;
+    height: 179rpx;
+    margin: 20rpx 30rpx;
+    border-radius: 10rpx;
+}
+
+.confirmWords {
+    width: 310rpx;
+    padding: 20px 0;
+    color: rgb(51, 51, 51);
+    font-size: 26rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.RenMinBi {
+    color: rgb(255, 0, 0);
+    font-size: 24rpx;
+    margin-bottom: 6rpx;
+    padding: 0 5rpx;
+}
+
+.RenMinBiTwo {
+    color: rgb(255, 0, 0);
+    font-size: 24rpx;
+    margin-top: 3rpx;
+    padding: 0 5rpx;
+}
+
+.RGB {
+    font-size: 38rpx;
+    color: rgb(255, 0, 0);
+}
+
+.Numbers {
+    color: rgb(51, 51, 51);
+    font-size: 36rpx;
+    margin-right: 30rpx;
+}
+
+.ContaiBoxThree {
+    width: 100%;
+    height: 220rpx;
+    display: flex;
+}
+
+.ContaiBoxFour {
+    height: 91rpx;
+    margin-left: 15px;
+    border-top: 1rpx solid rgb(236, 236, 236);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ContaiBoxFourWords {
+    display: flex;
+    font-size: 26rpx;
+}
+
+.WordsNumber {
+    color: rgb(255, 76, 76);
+    padding: 0 8rpx;
+}
+
+.ContaiBoxFourFontSize {
+    font-size: 26rpx;
+    color: rgb(102, 102, 102);
+    display: flex;
+    margin-right: 20rpx;
+}
+
+.FourNumber {
+    color: rgb(255, 0, 0)
+}
+
+.ContaiBoxposition {
+    width: 100%;
+    height: 98rpx;
+    display: flex;
+}
+
+.ContaiBoxpositionOne {
+    width: 100%;
+    height: 98rpx;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.ContaiBoxpositionOneFir {
+    height: 166rpx !important;
+}
+
+.positionLeft {
+    width: 70%;
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+}
+
+.positionRight {
+    width: 30%;
+    height: 100%;
+}
+
+.positionWords {
+    color: rgb(51, 51, 51);
+    font-size: 30rpx;
+    display: flex;
+    margin: 0 auto;
+}
+
+.positionRMB {
+    color: rgb(255, 71, 71);
+    font-size: 24rpx;
+    margin-top: 6rpx;
+}
+
+.positionWordsNumber {
+    color: rgb(255, 71, 71);
+    font-size: 30rpx;
+}
+
+.positionLeftBox {
+    width: 240rpx;
+    height: 100%;
+}
+
+.Btn {
+    width: 100%;
+    background: rgb(255, 151, 2);
+    text-align: center;
+    line-height: 98rpx;
+    border-radius: 0;
+    color: rgb(255, 255, 255);
+    font-size: 32rpx;
+    box-sizing: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.Zhanwei {
+    width: 100%;
+    height: 7vh;
+}
+
+button::after {
+    width: 0;
+    height: 0;
+}
+
+.addOne {
+    width: 25rpx;
+    height: 25rpx;
+}
+
+.ContaiBoxOneFir {
+    display: flex;
+    padding: 30rpx;
+    font-size: 26rpx;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+    align-items: center;
+}
+
+.ContaiBoxOneFirWords {
+    padding: 0 10rpx;
+}

@@ -1,0 +1,101 @@
+//index.js
+//获取应用实例
+import { postData, getData } from '../../utils/https'
+const time = require("../../utils/util.js");
+Page({
+    data: {
+        items: [{ id: 0, words: '全部订单' }, { id: 1, words: '未支付' }, { id: 2, words: '待收货' }, { id: 3, words: '已完成' }, { id: 4, words: '已取消' }],
+        currentTab: 0,
+        orderList: [{ id: 1, OrderNum: '123456789111', Ordertype: 3, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1577808000000, number: 17, priceMoney: 147.98 },
+            { id: 2, OrderNum: '123456789111', Ordertype: 1, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1577808000000, number: 17, priceMoney: 147.98 },
+            { id: 3, OrderNum: '123456789111', Ordertype: 2, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1579808000000, number: 17, priceMoney: 147.98 },
+            { id: 4, OrderNum: '123456789111', Ordertype: 4, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1588808000000, number: 17, priceMoney: 147.98 }
+        ],
+        orderListTwo: [{ id: 1, OrderNum: '123456789111', Ordertype: 3, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1577808000000, number: 17, priceMoney: 147.98, name: '老小子' },
+            { id: 2, OrderNum: '123456789111', Ordertype: 1, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1577808000000, number: 17, priceMoney: 147.98, name: '老小子' },
+            { id: 3, OrderNum: '123456789111', Ordertype: 2, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1579808000000, number: 17, priceMoney: 147.98, name: '老小子' },
+            { id: 4, OrderNum: '123456789111', Ordertype: 4, img: ['../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg', '../../images/Icon.jpg'], time: 1588808000000, number: 17, priceMoney: 147.98, name: '老小子' }
+        ],
+        modelHeight: 0,
+        isok: 1,
+    },
+    //事件处理函数
+
+    onLoad: function(optiacy) {
+        // 根据不同的缓存id来更换页面的标题
+        console.log(optiacy)
+        let that = this;
+
+        let orderId = optiacy.Ordertype;
+        //根据不同的事件跳转至该页面判断 是 我的订单 还是 粉丝订单
+        // 1 是 我的订单  0是粉丝订单
+        if (orderId == 1) {
+            let id = optiacy.id;
+            that.setData({
+                isok: 1,
+                currentTab: id
+            });
+            wx.setNavigationBarTitle({
+                    title: '我的订单'
+                })
+                // 这里还有一个请求 根据id来请求
+        } else {
+            that.setData({
+                isok: 0
+            })
+            wx.setNavigationBarTitle({
+                title: '粉丝订单'
+            })
+        }
+        that.getHeight();
+        let orderList = that.data.orderList;
+        for (let i = 0; i < orderList.length; i++) {
+            let orderLists = `orderList[${i}].time`
+            that.setData({
+                [orderLists]: time.formatTime(orderList[i].time, 'Y/M/D h:m:s')
+            })
+        }
+
+    },
+    getDatas() {
+        // 发起请求获取数据
+        // let url = '';
+        // let data = {
+        // }
+        // postData(url,data,res=>{
+
+        // })
+    },
+    navRouter(e) {
+        // 点击切换状态
+        let that = this;
+        if (that.data.currentTab === e.target.dataset.id) {
+            return false;
+        } else {
+            that.setData({
+                currentTab: e.target.dataset.id,
+            })
+        }
+
+        // 拿到id来if判断获取对应数据就可以了
+    },
+    getHeight() {
+        // 适配iphonex
+        let that = this;
+        let systemInfo = wx.getSystemInfoSync(); // 当前机型的总高度
+        let pxToRpxScale = 750 / systemInfo.windowWidth; //px转换rpx的系数
+        let iphoneX = wx.getStorageSync('isIphoneX');
+        if (iphoneX != null || iphoneX != '' || iphoneX != undefined) {
+            if (iphoneX == true) {
+                that.setData({
+                    modelHeight: 96 / pxToRpxScale,
+                })
+            } else {
+                that.setData({
+                    modelHeight: 66 / pxToRpxScale,
+                })
+            }
+        }
+
+    },
+})

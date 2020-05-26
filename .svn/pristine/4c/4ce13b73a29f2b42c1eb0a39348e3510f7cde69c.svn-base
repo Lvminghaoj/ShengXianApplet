@@ -1,0 +1,96 @@
+<view>
+    <view class='ContarBoxLookSou'>
+        <view class="InputChange">
+            <input type="text" placeholder="商品搜索" class='InputLook' bindinput='bindKeyInput' value='{{searchWords}}' focus='true' wx:if='{{!inputShowisOK}}' />
+            <input type="text" placeholder="商品搜索" class='InputLook' bindinput='bindKeyInput' value='{{searchWords}}' wx:if='{{inputShowisOK}}' />
+            <image src="../../images/delect2.png" class='lookImg' wx:if='{{showDel}}' bindtap='tapDelect' />
+        </view>
+        <view class='search' wx:if='{{!show}}'> 搜索 </view>
+        <view class='search' wx:if='{{show}}'>
+            <image src="../../images/addCarNum.png" class='loginTo' style='width:50rpx;height:50rpx;' bindtap='goToCarPage' />
+        </view>
+        <view class="absoluteToCar" hover-class="none" hover-stop-propagation="false" wx:if='{{show}}'>
+            <view class="" hover-class="none" hover-stop-propagation="false" style='margin: 0 auto;'>
+                {{carNumber}}
+            </view>
+        </view>
+    </view>
+    <!-- <view class='box' wx:if="{{showThree}}" wx:for='{{items}}' wx:key='{{index}}'>
+        <view class='boxCenter' bindtap='tapWordsData' data-code='{{item.code}}'>
+            <view style='width: 660rpx;'>
+                {{item.name}}
+            </view>
+            <image src="../../images/loginTo.png" class='loginTo' />
+        </view>
+    </view> -->
+    <!-- <view class='searchLook' wx:if="{{showTwo}}">
+        <view class='searchLookTop'>
+            历史搜索
+        </view>
+        <view class='searchLookCenter'>
+            <view class='searchBox' wx:for='{{searchLength}}' wx:key='{{index}}' data-index='{{index}}' bindtap='searchLength'>
+                {{item}}
+            </view>
+        </view>
+    </view> -->
+    <view class='scrollTop' bindtap='goTop' style='left:{{goTop}}'>
+        <view class="scrollbox" hover-class="none" hover-stop-propagation="false">
+            <image src="../../images/gotoTop.png" class='scroll' />
+        </view>
+    </view>
+    <swiper class="swiper" current="{{currentTab}}" bindchange="swiperChange" style="height:{{heightWindow}}px" wx:if="{{show}}">
+        <swiper-item>
+            <scroll-view scroll-y='true' style="height:{{heightWindow}}px" bindscroll='scrolltoupper' scrollWithAnimation scrollTop='{{scrollTop}}' bindrefresherpulling='scrollOne' bindscrolltolower='scrollTwo'>
+                <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style=" flex-wrap: wrap;display: flex;padding:0 10rpx">
+                    <view class='boxLoder' wx:for='{{items}}' wx:key='{{index}}' bindtap='keitShowSwitch' data-code='{{item.code}}'>
+                        <view class="" hover-class="none" hover-stop-propagation="false">
+                            <view class="paddLange" hover-class="none" hover-stop-propagation="false">
+                                <image class="lookImgTwo" src="{{item.img}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+                            </view>
+                        </view>
+                        <view class="" hover-class="none" hover-stop-propagation="false" style='padding-left: 10rpx;width:100%;'>
+                            <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style="padding-left: 15rpx;">
+                                <view class="" hover-class="none" hover-stop-propagation="false">
+
+                                </view>
+                            </view>
+                            <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style="padding-left: 15rpx;">
+                                <view class="" hover-class="none" hover-stop-propagation="false">
+                                    <view class="fontWordsTwo" hover-class="none" hover-stop-propagation="false">
+                                        {{item.name}}
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false" style="display:flex">
+                                <view class="couponTypeName" hover-class="none" hover-stop-propagation="false" wx:if='{{item.couponTypeName != 1}}'>
+                                    {{item.couponTypeName}}
+                                </view>
+                                <view class="couponTypeName" hover-class="none" hover-stop-propagation="false" wx:if='{{item.expressFlag == 0 }}'>
+                                    包邮
+                                </view>
+                                <view class="couponTypeName" hover-class="none" hover-stop-propagation="false">
+                                    公 益
+                                </view>
+                                <view class="couponTypeNameTwo" hover-class="none" hover-stop-propagation="false" wx:if='{{item.bizTypeName != undefined}}'>
+                                    {{item.bizTypeName}}
+                                </view>
+                            </view>
+                            <view class="boxloaderFlexJusricty paddLange" hover-class="none" hover-stop-propagation="false" style="padding-left: 15rpx;">
+                                <view class="boxLoderladdy moneyWords" hover-class="none" hover-stop-propagation="false">
+                                    ¥{{item.salePrice}}
+                                </view>
+                                <view class="boxLoderladdy" hover-class="none" hover-stop-propagation="false">
+                                    <image class="addCar" src="../../images/addCar.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" catchtap='addCarDatalength' data-index='{{index}}'>
+                                    </image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="computWordsLeaungth" hover-class="none" hover-stop-propagation="false" wx:if='{{computWordsLeaungth}}'>
+                        已经到底拉 ~
+                    </view>
+                </view>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

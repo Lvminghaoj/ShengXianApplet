@@ -1,0 +1,80 @@
+<view class="container">
+    <view class='Position'>
+        <view class='conBoxTop'>
+            <input type="text" bindinput='changeInputText' placeholder='{{searchValue}}' class='textChange' bindfocus='focusFn' bindblur='blurFn' />
+            <icon class="searchcion" size='20' type='search' />
+        </view>
+        <view class='conbox'>
+            <view class='conboxwords {{item.id == currentTab ? "conboxwordsTwo":""}}' wx:for="{{items}}" wx:key='index' data-id='{{item.id}}' bindtap='navRouter'>
+                {{item.words}}
+            </view>
+        </view>
+    </view>
+    <view class='heightHide' />
+    <view class='boxCenter' wx:for='{{orderList}}' wx:key='index' wx:for-item="item" wx:if='{{isok == 1}}'>
+        <view class='boxCenters'>
+            <view class='boxCenterTop'>
+                <view>
+                    订单号: {{item.OrderNum}}
+                </view>
+                <view class='colorOne {{item.Ordertype == 0 ? "colorTwo" : item.Ordertype == 1 ? "colorThree" : item.Ordertype == 4 ? "colorOne" : "" }}'>
+                    {{ item.Ordertype == 0 ? "未支付" : item.Ordertype == 1 ? "待收货" : item.Ordertype == 2 ? "发货中" : item.Ordertype == 4 ? "已取消" : "" }}
+                </view>
+                <image src="../../images/goods.png" class='lookImgGoods' wx:if='{{item.Ordertype == 3}}' />
+            </view>
+        </view>
+        <view>
+            <view class='boxCenterCenter'>
+                <view class='box' wx:for='{{item.img}}' wx:key='idx' wx:for-item="items">
+                    <image src="{{items}}" class='lookImg' />
+                </view>
+
+            </view>
+        </view>
+        <view class='boxBottom'>
+            <view class='boxCenterBottom'>{{item.time}}</view>
+            <view class='boxCenterBottom'>
+                共 {{item.number}} 件 实付:
+                <view class='CenterMoeny'>
+                    ¥ {{item.priceMoney}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='boxCenter' wx:for='{{orderListTwo}}' wx:key='index' wx:for-item="item" wx:if='{{isok != 1}}'>
+        <view class='boxCenters'>
+            <view class='boxCenterTop'>
+                <view>
+                    订单号: {{item.OrderNum}}
+                </view>
+                <view class='colorOne {{item.Ordertype == 1 ? "colorTwo" : item.Ordertype == 2 ? "colorThree" : item.Ordertype == 3 ? "colorOne" : "" }}'>
+                    {{ item.Ordertype == 1 ? "未支付" : item.Ordertype == 2 ? "待收货" : item.Ordertype == 4 ? "已取消" : "" }}
+                </view>
+                <image src="../../images/goods.png" class='lookImgGoods' wx:if='{{item.Ordertype == 3}}' />
+            </view>
+        </view>
+        <view class='centerTwo'>
+            <view class='boxCenterCenterTwo'>
+                <view class='box' wx:for='{{item.img}}' wx:key='idx' wx:for-item="items">
+                    <image src="{{items}}" class='lookImg' />
+                </view>
+            </view>
+            <view class='centerBoxprice'>
+                <view/>
+                <view class='boxCenterBottom'>
+                    共 {{item.number}} 件 实付:
+                    <view class='CenterMoeny'>
+                        ¥ {{item.priceMoney}}
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class='boxBottom'>
+            <view class='boxCenterBottom'>{{item.time}}</view>
+            <view class='boxCenterBottom'>
+                下单人 : {{item.name}}
+            </view>
+        </view>
+    </view>
+    <view style='width:100%;height:{{modelHeight}}px' />
+</view>

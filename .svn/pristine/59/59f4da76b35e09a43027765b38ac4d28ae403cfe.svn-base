@@ -1,0 +1,78 @@
+<view class="container">
+    <view class='ConTaiBox'>
+        <view class='ConTaiBoxOne'>
+            <view class='ConTaiBoxOneTop'>
+                <view>
+                    <view class='BottomOneWOrds'>
+                        钱包余额(元)
+                    </view>
+                    <view style='display:flex;margin-left:43rpx;margin-top: 10rpx;'>
+                        <view class='RMB'>
+                            ¥
+                        </view>
+                        <view class='BottomOne'>
+                            {{balance}}
+                        </view>
+                        <image src="../../images/eye.png" class='LookIMG' />
+                    </view>
+                </view>
+                <view class='conTaiboxBottom'>
+                    <view class='contaiBottom' bindtap='tapincomeDetails' data-id='1'>
+                        收入明细
+                    </view>
+                </view>
+            </view>
+            <view class='contaibottom'>
+                <view class='contaBottombtn' bindtap='cashWithdrawal'>
+                    提现余额
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='centerBox' />
+    <view class='box' />
+    <view class='Box'>
+        <view style='display:flex;margin-left:40rpx'>
+            <image src="../../images/money.png" class='Lookphoto' />
+            <view class='FontWords'>
+                总收入
+            </view>
+        </view>
+        <view class='money'>
+            ¥{{addNum}}
+        </view>
+    </view>
+    <view class='Box'>
+        <view style='display:flex;margin-left:40rpx'>
+            <image src="../../images/TepMoney.png" class='Lookphoto' />
+            <view class='FontWords'>
+                已经提现
+            </view>
+        </view>
+        <view class='money'>
+            ¥{{CashNum}}
+        </view>
+    </view>
+    <view class='Box'>
+        <view style='display:flex;margin-left:40rpx'>
+            <image src="../../images/time.png" class='Lookphoto' />
+            <view class='FontWords'>
+                提现中金额
+            </view>
+        </view>
+        <view class='money'>
+            ¥{{CashinNum}}
+        </view>
+    </view>
+    <view class='Box' bindtap='tapincomeDetails' data-id='2'>
+        <view style='display:flex;margin-left:40rpx'>
+            <image src="../../images/smallbox.png" class='Lookphoto' />
+            <view class='FontWords'>
+                提现记录
+            </view>
+        </view>
+        <view class='money wont'>
+            查看提现记录 >
+        </view>
+    </view>
+</view>

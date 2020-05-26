@@ -1,0 +1,56 @@
+<view class='cationBox'>
+    <view class='CatBox' wx:for='{{items}}' wx:key='index' data-id='{{index}}' wx:if='{{!ShowModel}}'>
+        <view class='Radios'>
+            <radio-group class="radio-group">
+                <radio class="radio" checked="{{item.checked}}" data-id='{{index}}' color='{{color}}' bindtap='radioChange' />
+            </radio-group>
+        </view>
+        <view>
+            <image src="{{item.goodsImg}}" class='lookImg' />
+        </view>
+        <view class='BoxWords'>
+            <view class='BoxWordsOne'>
+                <view class='BoxWordsFont'>
+                    {{item.tradeName}}
+                </view>
+                <view class='BoxWordsFontOne'>
+                    <view class='BoxWordsDlex'>
+                        <view style='color:rgb(255,1,1);font-size:26rpx;margin-bottom:6rpx;padding:0 5rpx;'>
+                            ¥
+                        </view>
+                        {{item.money}}
+                    </view>
+                    <view class='IconLook'>
+                        <view>
+                            <image src="../../images/reduce.png" alt="" class='LookImgSplce' bindtap='reduceNumber' data-id='{{index +1}}' data-Index='{{item.IndexNum}}' />
+                        </view>
+                        <view class='eightWords'>
+                            {{item.num}}
+                        </view>
+                        <view>
+                            <image src="../../images/add.png" alt="" class='LookImgSplce ' style='margin-right:10rpx ' bindtap='addNumber' data-id='{{index+1}}' data-Index='{{item.IndexNum}}' />
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='Zhanwei' style='height:{{getHeightS}}px'></view>
+    <view class='BoxBottom' style='position:fixed;left:0;bottom:{{btnbottom}}px'>
+        <view class='BoxBottomOne'>
+            <radio class="radioS" checked="{{checked}}" color='{{color}}' bindtap='RadiosUpShow' />
+            <view class='BoxWordS'>
+                全选
+            </view>
+        </view>
+        <view class='BoxBottomTwo'>
+            <view class='BoxBottomTwoFlont'>
+                合计: {{price}}
+            </view>
+        </view>
+        <button class='BoxBottomBtn' bindtap='Eatchclick'>确定订单</button>
+
+    </view>
+
+    <tabbar tabbar="{{tabbar}}" text='{{carNumber}}'></tabbar>
+</view>

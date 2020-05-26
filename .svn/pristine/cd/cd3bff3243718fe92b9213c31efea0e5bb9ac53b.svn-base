@@ -1,0 +1,262 @@
+    page {
+        height: 100%;
+        background: rgba(244, 243, 243, 1);
+    }
+    
+    .ConTaiBox {
+        width: 100%;
+        height: 249rpx;
+        padding-top: 30rpx;
+        background: #FF9702;
+    }
+    
+    .ConTaiBoxOne {
+        width: 690rpx;
+        margin: 30rpx;
+        height: 490rpx;
+        margin: 20rpx auto;
+        background: white;
+        border-top-left-radius: 40rpx;
+        border-top-right-radius: 40rpx;
+    }
+    
+    .ConTaiBoxOneTop {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .LookImg {
+        width: 140rpx;
+        height: 140rpx;
+        margin: 43rpx;
+        border-radius: 50%;
+    }
+    
+    .ConTaiBoxOneName {
+        padding-top: 30px;
+        padding-left: 10rpx;
+        height: 100%;
+        font-size: 36rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 500;
+        color: rgba(51, 51, 51, 1);
+        width: 300rpx;
+    }
+    
+    .LookImgTwo {
+        width: 24rpx;
+        height: 24rpx;
+    }
+    
+    .ContaiWords {
+        font-size: 24rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(153, 153, 153, 1);
+        margin-left: 19rpx;
+    }
+    
+    .ConTaiBoxImg {
+        display: flex;
+        margin-top: 30rpx;
+        align-items: center;
+    }
+    
+    .ConTaiBoxWOrds {
+        margin-top: 83rpx;
+        font-size: 24rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+    }
+    
+    .LookImgThree {
+        width: 152rpx;
+        height: 67rpx;
+    }
+    
+    .WordsCon {
+        position: absolute;
+        top: 16rpx;
+        left: 31rpx;
+    }
+    
+    .BottomOneWOrds {
+        font-size: 28rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(102, 102, 102, 1);
+    }
+    
+    .ConTaiBoxOneBottom {
+        margin: 0 30rpx;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .BottomOne {
+        font-size: 50rpx;
+        font-family: DIN;
+        font-weight: bold;
+        color: rgba(51, 51, 51, 1);
+    }
+    
+    .LookIMG {
+        width: 30rpx;
+        height: 30rpx;
+        padding-top: 57rpx;
+    }
+    
+    .LookImgEye {
+        width: 416rpx;
+    }
+    
+    .LookIMGOne {
+        width: 18rpx;
+        height: 28rpx;
+        margin-top: 30rpx;
+    }
+    
+    .ConTaiBoxOneBtn {
+        margin: 0 30rpx;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .Cbox {
+        width: 33.33%;
+    }
+    
+    .CboxWords {
+        font-size: 28rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(153, 153, 153, 1);
+        margin-top: 30rpx;
+    }
+    
+    .CboxWordsTwo {
+        font-size: 36rpx;
+        font-family: DIN;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+        margin-top: 5rpx;
+    }
+    
+    .ConTaiCenter {
+        height: 260rpx;
+        background: white;
+        margin: 0 30rpx;
+    }
+    
+    .ConTaiListly {
+        width: 25%;
+        margin: 0 30rpx;
+    }
+    
+    .ConTaiListlyOne {
+        width: 25%;
+        text-align: center;
+        padding: 20rpx 0;
+    }
+    
+    .imgGoods {
+        width: 46rpx;
+        height: 46rpx;
+    }
+    
+    .ListWords {
+        font-size: 28rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+    }
+    
+    .ConTaiCenterTWO {
+        text-align: center;
+        background: white;
+        margin: 30rpx;
+    }
+    
+    .myOrderBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .myOrderBoxTwo {
+        padding: 15rpx 40rpx;
+    }
+    
+    .myOrder {
+        font-size: 30rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(51, 51, 51, 1);
+    }
+    
+    .myOrderTwo {
+        font-size: 28rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(153, 153, 153, 1);
+        display: flex;
+    }
+    
+    .ConTaiCenterThree {
+        display: flex;
+        background: white;
+        margin: 30rpx;
+    }
+    
+    .ContaiList {
+        padding: 20rpx 0;
+    }
+    
+    .Box {
+        height: 100rpx;
+        background: white;
+        margin: 0 30rpx;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1rpx solid rgba(244, 243, 243, 1);
+    }
+    
+    .boxWords {
+        font-size: 28rpx;
+        font-family: Source Han Sans CN;
+        font-weight: 400;
+        color: rgba(102, 102, 102, 1);
+        width: 550rpx;
+    }
+    
+    .Boximg {
+        width: 30rpx;
+        height: 30rpx;
+        margin-left: 40rpx;
+        margin-top: 10rpx;
+    }
+    
+    .Bottom {
+        width: 18rpx;
+        height: 28rpx;
+        margin-right: 40rpx;
+    }
+    
+    .Btn {
+        border: 1px solid #FF9702;
+        min-height: 60rpx !important;
+        line-height: 60rpx;
+        margin-top: 60rpx;
+        background: #FF9702;
+        color: white;
+        padding: 0;
+    }
+    
+    .BottomTwo {
+        width: 14rpx;
+        height: 22rpx;
+        margin-top: 7rpx;
+        margin-left: 10rpx;
+    }

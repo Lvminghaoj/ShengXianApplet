@@ -1,0 +1,63 @@
+<view class="container">
+    <view class='created'>
+        <view class='boxTwo' wx:for='{{bankListShow}}' wx:key='{{index}}'>
+            <view>
+                <image src="{{item.img}}" class='LooKimg' />
+            </view>
+            <view class='boxCENTERTwo'>
+                <view class='cashColorTwo' data-value='{{item.cardType}}'>
+                    {{ item.cardType == "DC" ? '储蓄卡': item.cardType == "CC" ? '信用卡': item.cardType == "SCC" ? '准贷记卡': item.cardType == "PC" ? '预付费卡' : '' }}
+                </view>
+            </view>
+            <view class='cashColorThree'>
+                {{item.cardNo}}
+            </view>
+        </view>
+
+        <view class='boxTwo' bindtap='addCashcare'>
+            <view class='boxThree'>
+                <view>
+                    <image src="../../images/cash.png" class='LooKimgTwo' />
+                </view>
+                <view class='boxLeft'>
+                    添加您的银行卡
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class='contaiBoxTop' wx:if='{{addCashcare}}'>
+        <view class='box'>
+            <view class='boxLeft'>
+                银行卡名称
+            </view>
+            <view class='boxRight'>
+                <picker bindchange="bankListName" value="{{bankListName}}" range="{{Frray}}">
+                    <view class="picker">
+                        {{bankListName}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                银行卡账号
+            </view>
+            <view class='boxRight'>
+                <input type="number" bindchange='colokNum' value='{{bankCardNum}}' maxlength='20' class='inputValNum' placeholder='输入银行卡账号' placeholder-style='text-align:right' />
+            </view>
+        </view>
+        <view class='box'>
+            <view class='boxLeft'>
+                开户名
+            </view>
+            <view class='boxRight'>
+                <input type="text" bindchange='colokName' value='{{bankCardwordsName}}' class='inputValNum' placeholder='输入开户名' placeholder-style='text-align:right' />
+            </view>
+        </view>
+    </view>
+    <button class='contaiBtn' bindtap='btnAddData' wx:if='{{addCashcare}}'>提交修改</button>
+    <view class='contaiWords' wx:if='{{addCashcare}}'>
+        内容仅供于本人提现
+    </view>
+</view>

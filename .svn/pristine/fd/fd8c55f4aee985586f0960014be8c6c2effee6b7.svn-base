@@ -1,0 +1,64 @@
+{
+    "pages": [
+        "pages/index/index",
+
+        "pages/orderData/orderData",
+
+        "pages/incomeDetails/incomeDetails",
+        "pages/confirmOrder/confirmOrder",
+        "pages/commodityDetails/commodityDetails",
+        "pages/myPage/myPage",
+        "pages/cashWithdrawal/cashWithdrawal",
+        "pages/authentication/authentication",
+        "pages/car/car",
+        "pages/search/search",
+        "pages/information/information",
+        "pages/login/login",
+        "pages/cardCertification/cardCertification",
+        "pages/myWallet/myWallet",
+        "pages/Suggested/Suggested",
+        "pages/becomeLeader/becomeLeader",
+        "pages/myFans/myFans",
+        "pages/myAchievements/myAchievements",
+        "pages/goodsDetail/goodsDetail",
+        "pages/canvas/canvas",
+        "pages/aboutUs/aboutUs",
+        "pages/Customer/Customer"
+
+    ],
+    "tabBar": {
+        "selectedColor": "#FF9702",
+        "borderStyle": "white",
+        "color": "#D0D0D0",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "./images/indexOne.png",
+                "selectedIconPath": "./images/indexTwo.png"
+            },
+            {
+                "pagePath": "pages/car/car",
+                "text": "购物车",
+                "iconPath": "./images/carOne.png",
+                "selectedIconPath": "./images/carTwo.png"
+            },
+            {
+                "pagePath": "pages/myPage/myPage",
+                "text": "我的",
+                "iconPath": "./images/meOne.png",
+                "selectedIconPath": "./images/meTwo.png"
+            }
+        ]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "white"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "plugins": {
+
+    }
+}
